@@ -19,6 +19,15 @@
 
 ## 設計書
 <...>
+使用gem
+devise	        会員と管理者登録
+kaminari	      ページネーション
+bootstrap	      デザイン
+fontawesome	    デザイン
+enum	          ステータス管理
+l18n	          日本語化
+themoviedb-api	API　TMBIの使用簡素化
+jquery-rails	  javascriptのライブラリ使用
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -29,4 +38,6 @@
 
 ## 使用素材
 - 外部APIの利用をして画像登録予定。制作経過次第では画像の使用はなしの予定
+- 楽天API（使用予定）
+- TMDB API（使用予定）
  

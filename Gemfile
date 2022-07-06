@@ -59,3 +59,10 @@ gem "dotenv-rails"
 group :production do
   gem "mysql2"
 end
+
+gem "devise"
+gem "kaminari","~> 1.2.1"
+gem "bootstrap", "~> 4.3.1"
+gem "jquery-rails"
+gem "rails-i18n"
+gem "enum_help" 

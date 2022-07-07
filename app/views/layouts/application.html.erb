@@ -11,6 +11,67 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="bg-info">
+      <div class="d-flex flex-column">
+        <nav class="navbar navbar-expand-lg ml-auto">
+          <container>
+            <div class="navbar-brand rounded bg-white mr-4 p-2">
+             <%= link_to"TOP", root_path %>
+            </div>
+            <ul class="navbar nav ml-auto">
+              <% if users_user_signed_in? %>
+                <li class="nav-item bg-white">
+                 <%= link_to"About", about_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"作品サーチ",  searches_search_path %>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"マイページ", user_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"ログアウト", destroy_users_user_session_path %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"About", about_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"作品サーチ",  searches_search_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"会員一覧", admin_users_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"通報一覧", admin_reports_path %>
+                </li>
+                 <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"ログアウト", destroy_admin_session_path %>
+                </li>
+              <% else %>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"About", about_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"作品サーチ",  searches_search_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"新規登録", new_users_user_registration_path %>
+                </li>
+                <li class="nav-item rounded bg-white mr-4 p-2">
+                 <%= link_to"ログイン", new_users_user_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </container>
+        </nav>
+      </div>
+    </header>
+     <div class="m-5">
+       <%= yield %>
+     </div>
+    <footer class="footer bg-info fixed-bottom" style="height: 40px;">
+      <p class="d-flex align-items-center justify-content-center" style="height: 40px;">どれみる?</p>
+    </footer>
   </body>
 </html>

@@ -20,14 +20,14 @@
             </div>
             <ul class="navbar nav ml-auto">
               <% if users_user_signed_in? %>
-                <li class="nav-item bg-white">
+                <li class="nav-item rounded bg-white mr-4 p-2">
                  <%= link_to"About", about_path %>
                 </li>
                 <li class="nav-item rounded bg-white mr-4 p-2">
                  <%= link_to"作品サーチ",  searches_search_path %>
+                </li>
                 <li class="nav-item rounded bg-white mr-4 p-2">
-                <li class="nav-item rounded bg-white mr-4 p-2">
-                 <%= link_to"マイページ", user_path %>
+                 <%= "マイページ" %>
                 </li>
                 <li class="nav-item rounded bg-white mr-4 p-2">
                  <%= link_to"ログアウト", destroy_users_user_session_path %>
@@ -71,7 +71,10 @@
        <%= yield %>
      </div>
     <footer class="footer bg-info fixed-bottom" style="height: 40px;">
-      <p class="d-flex align-items-center justify-content-center" style="height: 40px;">どれみる?</p>
+      <p class="d-flex align-items-center justify-content-center" style="height: 40px;">
+        どれみる?
+        <%= link_to"管理者はこちら", new_admin_session_path %>
+      </p>
     </footer>
   </body>
 </html>

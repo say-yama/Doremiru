@@ -22,9 +22,10 @@
 
 使用gem
 devise	        会員と管理者登録
+devise-i18n.    deviseの日本語化
 kaminari	      ページネーション
 bootstrap	      デザイン
-enum	          ステータス管理
+enum_help	          ステータス管理
 rails-i18n	          日本語化
 themoviedb-api	API　TMBIの使用簡素化
 jquery-rails	  非同期通信　レビューおよびAPIに使用

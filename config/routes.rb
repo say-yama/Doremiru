@@ -1,31 +1,18 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'reports/index'
-    get 'reports/show'
-    get 'reports/update'
+    resources :reports,   only: [:index, :show, :update]
   end
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/update'
+    resources :users,     only: [:index, :show, :update]
   end
-  get 'reports/new'
-  get 'reports/create'
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'posts/destroy'
-  get 'posts/search'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/likes'
-  get 'users/check'
-  get 'users/withdrawal'
-  get 'homes/top'
-  get 'homes/about'
+  
+  root to: "homes#top"
+  resources :homes,       only: [:about]
+  resources :posts
+  resources :users,       only: [:show, :edit, :updat, :likes, :check, :withdrawal]
+  resources :reports,     only: [:new, :create]
+  resources :categories
+
   devise_for :admins, controllers: {
   sessions:      "admins/sessions",
   passwords:     "admins/passwords",

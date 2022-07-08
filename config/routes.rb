@@ -15,8 +15,7 @@ Rails.application.routes.draw do
     resources :users,     only: [:index, :show, :update]
   end
   
-  namespace :users do
-    resources :users,       only: [:show, :edit, :updat, :likes, :check, :withdrawal]
+  namespace :user do
   end
   
   root to: "homes#top"
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :reports,     only: [:new, :create]
   resources :categories
+  resources :users,       only: [:show, :edit, :updat, :likes, :check, :withdrawal]
+  get "likes" => "users#likes"
   get "search" => "searches#search"
 
 

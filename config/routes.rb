@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins, controllers: {
   sessions:      "admins/sessions",
   passwords:     "admins/passwords",
@@ -9,22 +9,30 @@ Rails.application.routes.draw do
     passwords:     "users/passwords",
     registrations: "users/registrations"
   }
-  
+
   namespace :admin do
     resources :reports,   only: [:index, :show, :update]
     resources :users,     only: [:index, :show, :update]
   end
-  
-  namespace :users do
-    resources :users,       only: [:show, :edit, :updat, :likes, :check, :withdrawal]
+
+  namespace :user do
   end
-  
+
   root to: "homes#top"
   get "about" => "homes#about"
   get 'searches/search'
-  resources :posts
+  resources :posts do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :reports,     only: [:new, :create]
   resources :categories
+  resources :users,       only: [:show, :edit, :updat, :favorites, :check, :withdrawal] do
+   member do
+    get "favorites" => "users#favorites"
+   end
+  end
+
+  patch "users/:id" => "users#update"
   get "search" => "searches#search"
 
 

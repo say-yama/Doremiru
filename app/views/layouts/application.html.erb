@@ -8,6 +8,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/2c3be2f810.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -27,7 +28,7 @@
                  <%= link_to"作品サーチ",  searches_search_path %>
                 </li>
                 <li class="nav-item rounded bg-white mr-4 p-2">
-                 <%= "マイページ" %>
+                 <%= link_to"マイページ", user_path(current_user) %>
                 </li>
                 <li class="nav-item rounded bg-white mr-4 p-2">
                  <%= link_to"ログアウト", destroy_user_session_path %>
@@ -67,7 +68,7 @@
         </nav>
       </div>
     </header>
-     <div class="m-5">
+     <div class="m-5 col-md-12">
        <%= yield %>
      </div>
     <footer class="footer bg-info fixed-bottom" style="height: 40px;">

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-2">
+   <%= render "users/profile" %>
+  </div>
+  <div class="col-md-10">
+    <h1>いいね一覧</h1>
+    
+    <% if @favorite_posts.present? %>
+      <%= @favorite_posts.each do |favorite_post| %>
+        <%= link_to image_tag( favorite_post.image.variant(resize: '100x100') ), post_path(favorite_post.id) %>
+        <%= link_to favorite_post.user.name, user_path(favorite_post.user.id) %>
+        <i class="fa fa-heart unlike-btn"></i>
+        <%= favorite_post.favorites.length %>
+        <%= link_to favorite_post.title, post_path(favorite_post.id) %>
+      <% end %>
+    <% else %>
+      <p>いいねした投稿はありません</p>
+    <% end %>
+  </div>
+</div>

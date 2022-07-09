@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :reports,     only: [:new, :create]
   resources :categories
   resources :users,       only: [:show, :edit, :updat, :likes, :check, :withdrawal]
+  patch "users/:id" => "users#update"
   get "likes" => "users#likes"
   get "search" => "searches#search"
 

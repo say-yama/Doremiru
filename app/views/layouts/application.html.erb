@@ -27,12 +27,10 @@
   <body>
     <header class="bg-info">
       <div class="d-flex flex-column">
-        <nav class="navbar navbar-expand-lg ml-auto">
-          <container>
-            <div class="navbar-brand rounded bg-white mr-4 p-2">
-             <%= link_to"TOP", root_path %>
-            </div>
-            <ul class="navbar nav ml-auto">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand bg-white rounded" href="/"><%= image_tag"megane1.png", size: "180x70" %></a>
+            <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item rounded bg-white mr-4 p-2">
                  <%= link_to"About", about_path %>
@@ -83,12 +81,14 @@
                 </li>
               <% end %>
             </ul>
-          </container>
+          </div>
         </nav>
       </div>
     </header>
-     <div class="m-5 col-md-12">
-       <%= yield %>
+     <div class="col-md-12">
+        <div class="m-5">
+           <%= yield %>
+        </div>
      </div>
     <footer class="footer bg-info fixed-bottom" style="height: 40px;">
       <p class="d-flex align-items-center justify-content-center" style="height: 40px;">

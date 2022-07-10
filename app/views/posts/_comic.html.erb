@@ -27,6 +27,9 @@
                    <p class="card-text">
                      <%= post.post_body %>
                    </p>
+                   <p class="card-text m-0">
+                     <%= l post.created_at, format: :short %>
+                   </p>
                     <span><%#= link_to "#{@post.post_comments.count} コメント", post_image_path(@post.id), class: "text-dark" %></span>
                 </div>
               </div>

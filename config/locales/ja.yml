@@ -1,20 +1,5 @@
 ja:
-  enums:
-    category:
-      name:
-        movie: "映画"
-        book: "小説"
-        comic: "漫画"
-    gunre:
-      name:
-        action: "アクション"
-        mystery: "ミステリー"
-        sf: "SF"
-        fantagy: "ファンタジー"
-        romance: "恋愛"
-        horror_suspense: "ホラー・サスペンス"
-        comedy: "コメディ"
-        animated: "アニメ"
-        human: "ヒューマン"
-        historycal: "歴史"
-        other: "その他"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y/%m/%d"

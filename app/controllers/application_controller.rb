@@ -19,9 +19,10 @@ class ApplicationController < ActionController::Base
     root_url
   end
   
-  #新規登録時にアカウント名を追加する
+  #新規登録/編集時にアカウント名を追加する
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
   end
   
 end

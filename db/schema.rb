@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_09_083637) do
+ActiveRecord::Schema.define(version: 2022_07_10_120534) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_083637) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "gunres", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_083637) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
-    t.integer "gunre_id"
+    t.integer "genre_id"
     t.string "title", null: false
     t.string "post_title", null: false
     t.text "post_body", null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_083637) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["gunre_id"], name: "index_posts_on_gunre_id"
+    t.index ["genre_id"], name: "index_posts_on_genre_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -146,6 +146,6 @@ ActiveRecord::Schema.define(version: 2022_07_09_083637) do
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "posts", "categories"
-  add_foreign_key "posts", "gunres"
+  add_foreign_key "posts", "genres"
   add_foreign_key "posts", "users"
 end

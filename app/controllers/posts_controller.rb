@@ -30,5 +30,5 @@ end
 
 private
   def post_params
-    params.require(:post).permit(:category_id, :gunre_id, :title, :post_title, :post_body, :rate, )
+    params.require(:post).permit(:category_id, :genre_id, :title, :post_title, :post_body, :rate, )
   end

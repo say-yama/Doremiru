@@ -13,7 +13,8 @@ class User < ApplicationRecord
      file_path = Rails.root.join("app/assets/images/megane.png")
      image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
    end
-   image
+  # image.variant(gravity: :center, resize: "100x100", crop: "100x100x0x0").processed
+   image.variant(resize_to_fill: [200, 200])
   end
 
 end

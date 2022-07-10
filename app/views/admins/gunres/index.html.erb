@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8 mx-auto">
     <h2>ジャンルの追加</h2>
-     <%= form_with model: [:admins, @gunre] do |f| %>
+     <%= form_with model: [:admins, @genre] do |f| %>
         <div class="from_input">
           <%= f.label :ジャンル名 %><br>
           <%= f.text_field :name %>
@@ -11,9 +11,9 @@
         </div>
      <% end %>
      <br>
-     <% @gunres.each do |gunre| %>
-      <%= gunre.name %>
-      <%= link_to "削除", "/admins/gunres/#{gunre.id}", method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+     <% @genres.each do |genre| %>
+      <%= genre.name %>
+      <%= link_to "削除", "/admins/genres/#{genre.id}", method: :delete, "data-confirm" => "本当に削除しますか？"  %>
      <% end %>
 
   </div>

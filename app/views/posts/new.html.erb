@@ -11,8 +11,8 @@
             <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
           </div>
           <div class="form_input">
-            <%= f.label :gunre_id, "ジャンル" %><br>
-            <%= f.collection_radio_buttons :gunre_id, Gunre.all, :id, :name %>
+            <%= f.label :genre_id, "ジャンル" %><br>
+            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
           </div>
           <div class="form_input">
             <%= f.label :post_title, "タイトル" %>

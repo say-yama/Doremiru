@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'gunres/new'
+  get 'genres/new'
   devise_for :admins, controllers: {
   sessions:      "admins/sessions",
   passwords:     "admins/passwords",
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :categories
-    resources :gunres
+    resources :genres
     resources :reports,   only: [:index, :show, :update]
     resources :users,     only: [:index, :show, :update]
   end

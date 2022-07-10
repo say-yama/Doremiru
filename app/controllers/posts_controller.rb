@@ -7,13 +7,15 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to post_path
+    redirect_to post_path(@post)
   end
 
   def index
+    @posts = Post.all
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
   def search
   end
 end
-  
+
 private
   def post_params
     params.require(:post).permit(:category_id, :gunre_id, :title, :post_title, :post_body, :rate, )

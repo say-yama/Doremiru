@@ -1,11 +1,7 @@
 <div class="border">
 
-    <div class="mt-2 text-center">
-      <% if @user.image.attached? %>
-       <%= image_tag @user.image, size: "200x200" %>
-      <% else %>
-       <i class="fa-solid fa-user fa-5x border p-3 rounded-circle" style="color: gray;"></i>
-      <% end %>
+    <div class="m-2 text-center rounded-circle border">
+       <%= image_tag @user.get_icon, size: "150x150" %>
     </div>
     <ul class="list-unstyled text-center">
       <li class="mt-3">

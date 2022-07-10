@@ -1,2 +1,25 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="col-md-8 mx-auto">
+
+
+<div class="card">
+  <div class="card-body">
+    <div class="col-2 mt-3 rounded-circle">
+      <%= image_tag @post.user.get_icon %><br>
+    </div>
+    <div class="col-md-10 mt-3">
+     <h2 class="card-title">
+       <%= @post.title %>
+     </h2>
+       <%= @post.gunre_id %>
+     <h3 class="card-title">
+       <%= @post.post_title %>
+     </h3>
+     <p class="card-text">
+       <%= @post.post_body %>
+     </p>
+      <span><i class="fas fa-user"></i> <%= @post.user.name %> ｜ </span>
+      <span><%#= link_to "#{@post.post_comments.count} コメント", post_image_path(@post.id), class: "text-dark" %></span>
+    </div>
+  </div>
+ </div>
+</div>

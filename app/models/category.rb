@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-
+ has_many :posts
+ 
 
   # enum name: {
   #   movie: 0,

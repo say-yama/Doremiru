@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <h2>カテゴリの追加</h2>
+     <%= form_with model: [:admins, @category] do |f| %>
+        <div class="from_input">
+          <%= f.label :カテゴリー名 %><br>
+          <%= f.text_field :name %>
+        </div>
+        <div class="form_action"><br>
+          <%= f.submit "登録する", class: "btn btn-primary" %>
+        </div>
+     <% end %>
+     <br>
+     <% @categories.each do |category| %>
+      <%= category.name %>
+      <%= link_to "削除", "/admins/categories/#{category.id}", method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+     <% end %>
+
+  </div>
+</div>

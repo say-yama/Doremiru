@@ -1,2 +1,41 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="col-md-12 bg-light p-0">
+
+<ul class="nav nav-tabs bg-white">
+  <li class="nav-item lead text-align-center", style="letter-spacing: 1em;">
+    <a class="nav-link active pl-5 pr-5" href="#TOP" data-bs-toggle="tab">TOP</a>
+  </li>
+  <li class="nav-item lead", style="letter-spacing: 1em;">
+    <a class="nav-link pl-5 pr-5" href="#movie" data-bs-toggle="tab">映画</a>
+  </li>
+  <li class="nav-item lead", style="letter-spacing: 1em;">
+    <a class="nav-link pl-5 pr-5" href="#book" data-bs-toggle="tab">小説</a>
+  </li>
+  <li class="nav-item lead", style="letter-spacing: 1em;">
+    <a class="nav-link pl-5 pr-5" href="#comic" data-bs-toggle="tab">マンガ</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+    <div id="TOP" class="tab-pane active">
+      <div>
+        <%= render "posts/index" %>
+      </div>
+    </div>
+    <div id="movie" class="tab-pane">
+      <div>
+       <%= render "posts/movie" %>
+      </div>
+    </div>
+    <div id="book" class="tab-pane">
+      <div>
+        <%= render "posts/book" %>
+      </div>
+    </div>
+    <div id="comic" class="tab-pane">
+      <div>
+        <%= render "posts/comic" %>
+      </div>
+    </div>
+</div>
+
+</div>

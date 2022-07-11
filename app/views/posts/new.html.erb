@@ -1,2 +1,31 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <h1>新規投稿</h1>
+      <%= form_with model: @post do |f| %>
+          <div class="form-input">
+            <%= f.label :title, "作品名" %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <div class="form_input">
+            <%= f.label :category_id, "カテゴリー" %><br>
+            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+          </div>
+          <div class="form_input">
+            <%= f.label :genre_id, "ジャンル" %><br>
+            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+          </div>
+          <div class="form_input">
+            <%= f.label :post_title, "タイトル" %>
+            <%= f.text_field :post_title, class: "form-control" %>
+          </div>
+          <div class="form_input">
+            <%= f.label :post_body, "感想" %>
+            <%= f.text_field :post_body, class: "form-control" %>
+          </div>
+
+          <div class="form_action row">
+              <%= f.submit "投稿する", class: "btn btn-primary"%>
+          </div>
+      <% end %>
+  </div>
+</div>

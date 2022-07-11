@@ -41,4 +41,5 @@ jquery-rails	  非同期通信　レビューおよびAPIに使用
 - 外部APIの利用をして画像登録予定。制作経過次第では画像の使用はなしの予定
 - 楽天API（使用予定）
 - TMDB API（使用予定）
+- 『いらすとや』(https://www.irasutoya.com/)の素材使用
  

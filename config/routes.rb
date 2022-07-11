@@ -26,9 +26,10 @@ Rails.application.routes.draw do
   get 'searches/search'
   resources :posts do
     resources :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :destroy]
   end
   resources :reports,     only: [:new, :create]
-  resources :users,       only: [:show, :edit, :updat, :favorites, :check, :withdrawal] do
+  resources :users,       only: [:show, :edit, :update, :favorites, :check, :withdrawal] do
    member do
     get "favorites" => "users#favorites"
    end

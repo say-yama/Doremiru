@@ -26,7 +26,7 @@
                    <%= post.post_body %>
                  </p>
                  <div class="d-flex text-right">
-                     <span class="mr-5">
+                     <span class="mr-3">
                        <!--一覧画面でのいいね追加削除期日実装予定-->
                        <!--<%# if post.favorited?(current_user) %>-->
                        <!--   <%#= link_to post_favorite_path(@posts, post.id), method: :delete do %>-->
@@ -40,11 +40,11 @@
                        <!--     <span class="ml-1 text-dark"><%= post.favorites.count %></span>-->
                        <!--<%# end %>-->
                     </span>
-                  <p class="card-text ml-3">
+                    <p class="mr-1">コメント件数：<%= post.comments.count %></p>
+                 </div>
+                  <p class="card-text text-right">
                     <%= l post.created_at, format: :short %>
                   </p>
-                 </div>
-                  <span><%#= link_to "#{@post.post_comments.count} コメント", post_image_path(@post.id), class: "text-dark" %></span>
               </div>
             </div>
           <% end %>

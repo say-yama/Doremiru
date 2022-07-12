@@ -40,12 +40,11 @@
                        <!--   <%# end %>-->
                        <!--     <span class="ml-1 text-dark"><%= post.favorites.count %></span>-->
                        <!--<%# end %>-->
-                    </span>
-                    <p class="card-text ml-3">
-                      <%= l post.created_at, format: :short %>
-                    </p>
+                     </span>
+                    <p class="mr-1">コメント件数：<%= post.comments.count %></p>
                    </div>
-                    <span><%#= link_to "#{@post.post_comments.count} コメント", post_image_path(@post.id), class: "text-dark" %></span>
+                    <p class="card-text text-right"><%= l post.created_at, format: :short %>
+ </p> 
                 </div>
               </div>
             <% end %>

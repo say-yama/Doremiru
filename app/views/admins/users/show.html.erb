@@ -14,7 +14,7 @@
     　</div>
     </div>
 　 <div class="text-right"><!--ステータス変更-->
-　   <%= form_with model: @user do |f|%>
+　   <%= form_with model: @user, url: admins_user_path(@user.id), method: :patch do |f|%>
   　   <%= f.select :status, User.statuses.keys.map {|k| [I18n.t("enums.user.status.#{k}"), k]} %>
     　<%= f.submit "変更", class: "btn btn-primary" %>
 　   <% end %>

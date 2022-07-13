@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  enum status: {status_active: 0, withdrawal: 1, deactivate: 2}
+
+  # アカウントのアイコン画像
   def get_icon
    unless image.attached?
      file_path = Rails.root.join("app/assets/images/megane.png")
@@ -17,5 +20,10 @@ class User < ApplicationRecord
   # image.variant(gravity: :center, resize: "100x100", crop: "100x100x0x0").processed
    image.variant(resize_to_fill: [200, 200])
   end
+
+  # 退会済のアカウントのログイン不可
+   def active_for_authentication?
+    super && status_active?
+   end
 
 end

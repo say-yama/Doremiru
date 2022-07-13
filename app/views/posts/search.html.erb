@@ -1,2 +1,29 @@
-<h1>Posts#search</h1>
-<p>Find me in app/views/posts/search.html.erb</p>
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <h1>作品サーチ</h1>
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+          <div class="form-input">
+            <%= f.label :title, "作品名" %>
+            <%= f.text_field :search, class: "form-control" %>
+          </div>
+          <div class="form_input">
+            <%= f.label :category_id, "カテゴリー" %><br>
+            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+          </div>
+          <div class="form_input">
+            <%= f.label :genre_id, "ジャンル" %><br>
+            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+          </div>
+          <div class="form_action row">
+              <%= f.submit "検索する", class: "btn btn-primary"%>
+          </div>
+      <% end %>
+  </div>
+</div>
+
+
+  <% @search_posts.each do |post| %>
+    <%= post.title %>
+    <%= post.category.name %>
+    <%= post.genre.name %><br>
+  <% end %>

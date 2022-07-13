@@ -29,10 +29,16 @@ class PostsController < ApplicationController
   end
 
   def search
+    @search_posts = Post.search(params)
   end
+
 end
 
 private
   def post_params
     params.require(:post).permit(:category_id, :genre_id, :title, :post_title, :post_body, :rate, )
+  end
+  
+  def search
+    params.permit(:title, :category_id, :genre_id)
   end

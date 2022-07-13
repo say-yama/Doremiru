@@ -3,3 +3,9 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d"
+  enums:
+    user:
+      status:
+        status_active: "利用中"
+        withdrawal: "退会済み"
+        deactivate: "利用停止"

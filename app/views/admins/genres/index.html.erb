@@ -12,8 +12,10 @@
      <% end %>
      <br>
      <% @genres.each do |genre| %>
-      <%= genre.name %>
-      <%= link_to "削除", "/admins/genres/#{genre.id}", method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+       <div class="d-flex">
+          <div class="col-3"><%= genre.name %></div>
+          <div><%= link_to "削除", "/admins/genres/#{genre.id}", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+       </div>
      <% end %>
 
   </div>

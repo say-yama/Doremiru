@@ -4,9 +4,15 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments
-  
+
   #いいねしているのがログイン中のユーザーかどうか
   def favorited?(user)
    favorites.where(user_id: user.id).exists?
+  end
+
+  #作品サーチの時のアクション
+  def self.search(search_params)
+    return all if search_params.nil?
+   where("title LIKE ?", "%#{search_params[:search]}%").where(category_id: search_params[:category_id]).where(genre_id: search_params[:genre_id])
   end
 end

@@ -21,20 +21,30 @@ class UsersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
-  def check
-  end
-
   def withdrawal
   end
-end
+
+  def deleted
+    @user = User.find(params[:id])
+    if
+      @user.update(status: 1)
+      reset_session
+      flash[:notice] = "退会処理を実行いたしました"
+      redirect_to root_path
+    else
+      flash[:notice] = "退会処理に失敗いたしました"
+      redirect_to user_path
+    end
+  end
 
 
 private
   def set_user
     @user = User.find(params[:id])
   end
-    
+
   def user_params
     params.require(:user).permit(:profile, :image)
   end
+end
 

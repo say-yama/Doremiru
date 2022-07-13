@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'genres/new'
   devise_for :admins, controllers: {
   sessions:      "admins/sessions",
   passwords:     "admins/passwords",
@@ -12,10 +11,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :categories
-    resources :genres
-    resources :reports,   only: [:index, :show, :update]
     resources :users,     only: [:index, :show, :update]
+    resources :categories, only: [:index, :create, :destroy]
+    resources :genres,   only: [:index, :create, :destroy]
+    resources :reports,   only: [:index, :show, :update]
   end
 
   namespace :user do
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "about" => "homes#about"
   get 'searches/search'
+  get 'genres/new'
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :destroy]
@@ -31,12 +31,13 @@ Rails.application.routes.draw do
   resources :reports,     only: [:new, :create]
   resources :users,       only: [:show, :edit, :update, :favorites, :check, :withdrawal] do
    member do
+    get "withdrawal" => "users#withdrawal"
+    patch "deleted" => "users#deleted"
     get "favorites" => "users#favorites"
    end
   end
-
   patch "users/:id" => "users#update"
-  get "search" => "searches#search"
+  get "search" => "posts#search"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

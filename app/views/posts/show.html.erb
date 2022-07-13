@@ -4,7 +4,7 @@
     <div class="card-body text-dark">
       <div class="row">
         <div class="d-flex">
-          
+
         <div>
           <%= image_tag @post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
         </div>
@@ -12,7 +12,7 @@
         <div class="ml-6 align-items:flex-end">
           <%= @post.user.name %>
         </div>
-        
+
         </div>
       </div>
        <p class="text-right"><%= @post.category.name %></p>
@@ -26,21 +26,33 @@
        <p class="card-text">
          <%= @post.post_body %>
        </p>
-       <div class="text-right">
-        <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete %>
-       </div>
+       <% if @post.user == current_user %>
+         <div class="text-right">
+           <%= link_to"編集", edit_post_path(@post), class: "btn btn-primary" %>
+           <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete %>
+         </div>
+       <% elsif admin_signed_in? %>
+         <div class="text-right">
+           <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete %>
+         </div>
+       <% end %>
        <div class="d-flex">
          <span class="mr-3">
-           <% if @post.favorited?(current_user) %>
-              <%= link_to post_favorite_path(@post.id), method: :delete do %>
-               <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
-              <% end %>
-               <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
-           <% else %>
-              <%= link_to post_favorites_path(@post.id), method: :post do %>
-                <span><i class="fa-solid fa-heart"></i>︎</span>
-              <% end %>
-                <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
+           <% if admin_signed_in? %>
+              <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+              <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
+            <% else %>
+             <% if @post.favorited?(current_user) %>
+                <%= link_to post_favorite_path(@post.id), method: :delete do %>
+                 <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+                <% end %>
+                 <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
+             <% else %>
+                <%= link_to post_favorites_path(@post.id), method: :post do %>
+                  <span><i class="fa-solid fa-heart"></i>︎</span>
+                <% end %>
+                  <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
+             <% end %>
            <% end %>
         </span>
         <p class="mr-5">コメント件数：<%= @post.comments.count %></p>
@@ -60,12 +72,22 @@
       <% end %>
     </div>
       <% @post.comments.each do |comment| %>
-        <div class="border mb-3">
+        <div class="border mb-3 p-3">
           <p><%= image_tag comment.user.get_icon, class: "img-thumbnail rounded-circle border" %></p>
           <%= comment.comment_body %>
           <%= comment.user.name %><br>
           <%= l comment.created_at, format: :short %>
-          <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete %>
+           <% if @post.user == current_user %>
+             <div class="text-right">
+               <%#= link_to"編集", edit_comment_path(@post, comment), class: "btn btn-primary" %>
+               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete %>
+             </div>
+           <% elsif admin_signed_in? %>
+             <div class="text-right">
+               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete %>
+             </div>
+           <% end %>
+
         </div>
       <% end %>
   </div>

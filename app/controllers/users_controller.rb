@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  before_action :set_user, only: [:favorites]
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @posts = @user.posts
   end
 

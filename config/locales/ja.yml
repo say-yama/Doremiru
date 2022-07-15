@@ -9,3 +9,8 @@ ja:
         status_active: "利用中"
         withdrawal: "退会済み"
         deactivate: "利用停止"
+    report:
+      status:
+        outstanding: "未対応"
+        closed: "対応済"
+        unnecessary: "対応不要"

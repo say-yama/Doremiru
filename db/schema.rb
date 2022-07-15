@@ -113,8 +113,6 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
     t.integer "reporter_id", null: false
     t.integer "reported_id", null: false
     t.text "reason", null: false
@@ -122,6 +120,8 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "post_id"
   end
 
   create_table "users", force: :cascade do |t|

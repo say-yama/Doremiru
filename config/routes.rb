@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
+    resources :reports, only: [:index, :show, :update]
     resources :users,     only: [:index, :show, :update]
     resources :categories, only: [:index, :create, :destroy]
     resources :genres,   only: [:index, :create, :destroy]
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :destroy]
   end
-  resources :reports,     only: [:new, :create]
   resources :users,       only: [:show, :edit, :update, :favorites, :check, :withdrawal] do
+   resources :reports,     only: [:new, :create]
    member do
     get "withdrawal" => "users#withdrawal"
     patch "deleted" => "users#deleted"

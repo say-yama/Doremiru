@@ -1,18 +1,23 @@
 <!--Rank-->
 <div class="col-md-5 mt-3">
-  <table class="table border">
-    <h3>投稿数Rank</h3>
+  <table class="table border bg-white">
+    <h2 class=" bg-white">
+      <span style="color:yellow;text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
+        <i class="fa-solid fa-crown"></i>
+      </span>
+      投稿数Rank
+    </h2>
     <thead>
-      <tr>
-        <th>投稿数順</th>
+      <tr class="text-center">
+        <th>Rank</th>
         <th>作品名</th>
         <th>記事の本数</th>
       </tr>
     </thead>
     <tbody>
       <% @ranks.first(3).each_with_index do |rank, i| %>
-        <tr>
-          <td><%= i + 1 %></td>
+        <tr class="text-center">
+          <td><strong><%= i + 1 %></strong></td>
           <td><%=rank.first %></td>
           <td><%=rank.second %></td>
         </tr>
@@ -23,18 +28,23 @@
 <!--カテゴリー別Rank-->
 <div class = "row mt-3">
   <div class="col-md-3 mx-auto">
-    <table class="table border">
-      <h3>映画Rank</h3>
+    <table class="table border bg-white">
+      <h3 class=" bg-white">
+        <span style="color:yellow;text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        映画Rank
+      </h3>
       <thead>
-        <tr>
-          <th>投稿数順</th>
+        <tr class="text-center">
+          <th>Rank</th>
           <th>作品名</th>
           <th>記事の本数</th>
         </tr>
       </thead>
       <tbody>
         <% @movie_ranks.first(3).each_with_index do |rank, i| %>
-          <tr>
+          <tr class="text-center">
             <td><%= i + 1 %></td>
             <td><%=rank.first %></td>
             <td><%=rank.second %></td>
@@ -45,18 +55,23 @@
   </div>
 
   <div class="col-md-3 mx-auto">
-    <table class="table border">
-      <h3>小説Rank</h3>
+    <table class="table border bg-white">
+      <h3 class=" bg-white">
+        <span style="color:yellow; text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        小説Rank
+      </h3>
       <thead>
-        <tr>
-          <th>投稿数順</th>
+        <tr class="text-center">
+          <th>Rank</th>
           <th>作品名</th>
           <th>記事の本数</th>
         </tr>
       </thead>
       <tbody>
         <% @book_ranks.first(3).each_with_index do |rank, i| %>
-          <tr>
+          <tr class="text-center">
             <td><%= i + 1 %></td>
             <td><%=rank.first %></td>
             <td><%=rank.second %></td>
@@ -67,18 +82,23 @@
   </div>
 
   <div class="col-md-3 mx-auto">
-    <table class="table border">
-      <h3>マンガRank</h3>
+    <table class="table border bg-white">
+      <h3 class=" bg-white">
+        <span style="color:yellow;text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        マンガRank
+      </h3>
       <thead>
-        <tr>
-          <th>投稿数順</th>
+        <tr class="text-center">
+          <th>Rank</th>
           <th>作品名</th>
           <th>記事の本数</th>
         </tr>
       </thead>
       <tbody>
         <% @comic_ranks.first(3).each_with_index do |rank, i| %>
-          <tr>
+          <tr class="text-center">
             <td><%= i + 1 %></td>
             <td><%=rank.first %></td>
             <td><%=rank.second %></td>

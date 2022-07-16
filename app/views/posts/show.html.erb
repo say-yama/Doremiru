@@ -43,7 +43,7 @@
            <% if admin_signed_in? %>
               <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
               <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
-            <% else %>
+           <% elsif user_signed_in? %>
              <% if @post.favorited?(current_user) %>
                 <%= link_to post_favorite_path(@post.id), method: :delete do %>
                  <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
@@ -55,6 +55,11 @@
                 <% end %>
                   <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
              <% end %>
+           <% else %>
+               <%= link_to new_user_registration_path, method: :get do %>
+                 <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+               <% end %>
+               <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
            <% end %>
         </span>
         <p class="mr-5">コメント件数：<%= @post.comments.count %></p>
@@ -95,9 +100,6 @@
                <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
              </div>
            <% end %>
-            <!--<%# if @user != current_user %>-->
-            <!--  <%#= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>-->
-            <!--<%# end %>-->
         </div>
       <% end %>
   </div>

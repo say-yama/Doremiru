@@ -30,8 +30,15 @@
       <div class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
-            <a class="navbar-brand bg-white rounded p-0" href="/"><%= image_tag"megane1.png", size: "180x50" %></a>
-            <ul class="navbar-nav">
+            <a class="navbar-brand bg-white rounded p-0 d-flex align-items-center" href="/">
+                <h1 class="font-weight-bold m-0">どれみる</h1><%= image_tag"megane.png", size: "180x50" %>
+            </a>
+          <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li>
                  <%= link_to"カテゴリー", admins_categories_path, class: "nav-item rounded btn btn-light mr-4" %>
@@ -53,6 +60,9 @@
                 </li>
               <% elsif user_signed_in? %>
                 <li class=>
+                 <%= link_to"TOP", root_path, class: "nav-item rounded btn btn-light mr-4"%>
+                </li>
+                <li class=>
                  <%= link_to"About", about_path, class: "nav-item rounded btn btn-light mr-4"%>
                 </li>
                 <li>
@@ -68,6 +78,9 @@
                  <%= link_to"ログアウト", destroy_user_session_path, class: "nav-item rounded btn btn-light mr-4" %>
                 </li>
               <% else %>
+                <li class=>
+                 <%= link_to"TOP", root_path, class: "nav-item rounded btn btn-light mr-4"%>
+                </li>
                 <li>
                  <%= link_to"About", about_path, class: "nav-item rounded btn btn-light mr-4" %>
                 </li>
@@ -82,6 +95,7 @@
                 </li>
               <% end %>
             </ul>
+           </div>
           </div>
         </nav>
       </div>

@@ -1,20 +1,60 @@
 <div class="row">
-  <div class="col-md-2">
+  <!--プロフィール欄-->
+  <div class="col-md-3">
    <%= render "users/profile" %>
   </div>
-  <div class="col-md-10">
-    <h1>いいね一覧</h1>
+  <!---->
+    <div class="col-md-8">
+  
+      <h1>いいね一覧</h1>
+      <% if @favorite_posts.present? %>
+        <% @favorite_posts.each do |favorite_post| %>
+           <%= link_to post_path(favorite_post.id), class: "text-decoration-none text-dark" do %>
+             <div class="card shadow-lg col-md-10 mx-auto mb-5">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-2">
+                      <%= image_tag favorite_post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
+                    </div>
     
-    <% if @favorite_posts.present? %>
-      <%= @favorite_posts.each do |favorite_post| %>
-        <%= link_to image_tag( favorite_post.image.variant(resize: '100x100') ), post_path(favorite_post.id) %>
-        <%= link_to favorite_post.user.name, user_path(favorite_post.user.id) %>
-        <i class="fa fa-heart unlike-btn"></i>
-        <%= favorite_post.favorites.length %>
-        <%= link_to favorite_post.title, post_path(favorite_post.id) %>
+                    <div class="col-7 ml-6">
+                      <i class="fas fa-user"></i> <%= favorite_post.user.name %>
+                    </div>
+                  </div>
+                   <p class="text-right"><%= favorite_post.category.name %></p>
+                   <p class="text-right"><%= favorite_post.genre.name %></p>
+                   <h2 class="card-title border-bottom">
+                     <%= favorite_post.post_title %>
+                   </h2>
+                   <h4 class="card-title border p-1">
+                     <%= favorite_post.title %>
+                   </h4>
+                   <p class="card-text">
+                     <%= favorite_post.post_body %>
+                   </p>
+                   <div class="d-flex justify-content-between mt-3">
+                     <div class="d-flex text-right">
+                        <span class="mr-3">
+                         <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+                         <span class="ml-1 text-dark"><%= favorite_post.favorites.count %></span>
+                        </span>
+                        <p class="mr-1">コメント件数：<%= favorite_post.comments.count %></p>
+                     </div>
+                     <div class="d-flex">
+                       <p class="card-text"> <%= l favorite_post.created_at %> </p>
+                       <% if @user == favorite_post.user %>
+                         <div class="text-right ml-2">
+                          <%= link_to"削除", post_path(favorite_post), class: "btn btn-danger", method: :delete %>
+                         </div>
+                       <% end %>
+                     </div>
+                   </div>
+                </div>
+              </div>
+           <% end %>
+        <% end %>
+      <% else %>
+        <p>いいねした投稿はありません</p>
       <% end %>
-    <% else %>
-      <p>いいねした投稿はありません</p>
-    <% end %>
-  </div>
+    </div>
 </div>

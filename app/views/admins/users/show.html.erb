@@ -1,5 +1,5 @@
-<h1>アカウント詳細ページ</h1>
-  <div class="col-md-8 p-5 mx-auto border border-3">
+<h1 class="mb-5">アカウント詳細ページ</h1>
+  <div class="col-md-8 p-4 mx-auto border border-3">
     <div class="d-flex">
     　<%= image_tag @user.get_icon, class: "img-thumbnail rounded-circle border" %>
     　<div>
@@ -13,7 +13,7 @@
     　 <h4> <%= @user.status_i18n %></h4>
     　</div>
     </div>
-　 <div class="text-right"><!--ステータス変更-->
+　 <div class="m-0 text-right h4"><!--ステータス変更-->
 　   <%= form_with model: @user, url: admins_user_path(@user.id), method: :patch do |f|%>
   　   <%= f.select :status, User.statuses.keys.map {|k| [I18n.t("enums.user.status.#{k}"), k]} %>
     　<%= f.submit "変更", class: "btn btn-primary" %>

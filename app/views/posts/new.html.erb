@@ -1,30 +1,30 @@
 <div class="row">
+  <h1>新規投稿</h1>
   <div class="col-md-8 mx-auto">
-    <h1>新規投稿</h1>
       <%= form_with model: @post do |f| %>
           <div class="form-input">
-            <%= f.label :title, "作品名" %>
-            <%= f.text_field :title, class: "form-control" %>
+            <%= f.label :title, "作品名", class: "h4 m-2" %>
+            <%= f.text_field :title, class: "form-control mb-3" %>
           </div>
           <div class="form_input">
-            <%= f.label :category_id, "カテゴリー" %><br>
-            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+            <%= f.label :category_id, "カテゴリー", class: "h4 m-2" %><br>
+            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, class: "mb-3" %>
           </div>
           <div class="form_input">
-            <%= f.label :genre_id, "ジャンル" %><br>
-            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+            <%= f.label :genre_id, "ジャンル", class: "h4 m-2" %><br>
+            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name, class: "mb-3" %>
           </div>
           <div class="form_input">
-            <%= f.label :post_title, "タイトル" %>
-            <%= f.text_field :post_title, class: "form-control" %>
+            <%= f.label :post_title, "タイトル", class: "h4 m-2" %>
+            <%= f.text_field :post_title, class: "form-control mb-3" %>
           </div>
           <div class="form_input">
-            <%= f.label :post_body, "感想" %>
-            <%= f.text_field :post_body, class: "form-control" %>
+            <%= f.label :post_body, "感想", class: "h4 m-2" %>
+            <%= f.text_area :post_body, class: "form-control" %>
           </div>
 
-          <div class="form_action row">
-              <%= f.submit "投稿する", class: "btn btn-primary"%>
+          <div class="form_action mt-4 text-center">
+              <%= f.submit "投稿する", class: "btn btn-primary w-50"%>
           </div>
       <% end %>
   </div>

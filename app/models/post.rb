@@ -12,7 +12,10 @@ class Post < ApplicationRecord
 
   #作品サーチの時のアクション
   def self.search(search_params)
-    return all if search_params.nil?
-   where("title LIKE ?", "%#{search_params[:search]}%").where(category_id: search_params[:category_id]).where(genre_id: search_params[:genre_id])
+    return if search_params.nil?
+  # where("title LIKE ?", "%#{search_params[:search]}%").where(category_id: search_params[:category_id]).where(genre_id: search_params[:genre_id])
+    where("title LIKE ?", "%#{search_params[:search]}%")
+    .where("category_id LIKE ?", "%#{search_params[:category_id]}%")
+    .where("genre_id LIKE ?", "%#{search_params[:genre_id]}%")
   end
 end

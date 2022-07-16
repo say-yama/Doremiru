@@ -1,11 +1,11 @@
 <div class ="row">
 
-  <div class="card shadow-lg col-md-6 mx-auto">
+  <div class="card shadow-lg col-md-6 mx-auto h-100">
     <div class="card-body text-dark">
       <div class="row">
         <div class="d-flex">
 
-        <div>
+        <div class="col-3">
           <%= image_tag @post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
         </div>
 
@@ -31,7 +31,7 @@
        <% if @post.user == current_user %>
          <div class="text-right">
            <%= link_to"編集", edit_post_path(@post), class: "btn btn-primary" %>
-           <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete %>
+           <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
          </div>
        <% elsif admin_signed_in? %>
          <div class="text-right">
@@ -43,7 +43,7 @@
            <% if admin_signed_in? %>
               <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
               <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
-            <% else %>
+           <% elsif user_signed_in? %>
              <% if @post.favorited?(current_user) %>
                 <%= link_to post_favorite_path(@post.id), method: :delete do %>
                  <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
@@ -55,6 +55,11 @@
                 <% end %>
                   <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
              <% end %>
+           <% else %>
+               <%= link_to new_user_registration_path, method: :get do %>
+                 <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+               <% end %>
+               <span class="ml-1 text-dark"><%= @post.favorites.count %></span>
            <% end %>
         </span>
         <p class="mr-5">コメント件数：<%= @post.comments.count %></p>
@@ -68,32 +73,33 @@
 
     <!--コメント部分-->
 
-  <div class="col-md-6">
-    <div>
+  <div class="col-md-5">
+    <div class="m-5">
       <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment_body, rows: "5", placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
+        <%= f.text_area :comment_body, cols: "50", rows: "5", placeholder: "コメントをどうぞ！" %>
+        <div class="text-right"><%= f.submit "送信する", class: "btn btn-secondary" %></div>
       <% end %>
     </div>
       <% @post.comments.each do |comment| %>
-        <div class="border mb-3 p-3">
-          <p><%= image_tag comment.user.get_icon, class: "img-thumbnail rounded-circle border" %></p>
-          <%= comment.user.name %><br>
-          <%= comment.comment_body %>
-          <%= l comment.created_at, format: :short %>
-           <% if @post.user == current_user %>
+        <div class="border border-2 mb-3 p-3">
+          <div class="d-flex">
+            <p class="col-2"><%= image_tag comment.user.get_icon, class: "img-thumbnail rounded-circle border" %></p>
+            <%= link_to user_path(comment.user), class: "text-dark", method: :get do %>
+              <%= comment.user.name %>
+            <% end %>
+          </div>
+          <%= comment.comment_body %><br>
+          <p class="text-right m-0"><%= l comment.created_at, format: :short %></p>
+           <% if comment.user == current_user %>
              <div class="text-right">
                <%#= link_to"編集", edit_comment_path(@post, comment), class: "btn btn-primary" %>
-               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete %>
+               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"}%>
              </div>
            <% elsif admin_signed_in? %>
              <div class="text-right">
-               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete %>
+               <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
              </div>
            <% end %>
-            <!--<%# if @user != current_user %>-->
-            <!--  <%#= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>-->
-            <!--<%# end %>-->
         </div>
       <% end %>
   </div>

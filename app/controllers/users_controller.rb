@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    # if @posts.nil?
+    #   "投稿はまだありません"
+    # end
   end
 
   def edit
@@ -22,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def withdrawal
+      @user = current_user
   end
 
   def deleted

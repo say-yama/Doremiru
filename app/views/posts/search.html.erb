@@ -1,29 +1,77 @@
 <div class="row">
+  <h1>作品サーチ</h1>
   <div class="col-md-8 mx-auto">
-    <h1>作品サーチ</h1>
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <div class="form-input">
-            <%= f.label :title, "作品名" %>
-            <%= f.text_field :search, class: "form-control" %>
-          </div>
-          <div class="form_input">
-            <%= f.label :category_id, "カテゴリー" %><br>
-            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
-          </div>
-          <div class="form_input">
-            <%= f.label :genre_id, "ジャンル" %><br>
-            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
-          </div>
-          <div class="form_action row">
-              <%= f.submit "検索する", class: "btn btn-primary"%>
-          </div>
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+        <div class="form-input mt-2">
+          <%= f.label :title, "作品名", class: "h4" %>
+          <%= f.text_field :search, class: "form-control" %>
+        </div>
+        <div class="form_input mt-2">
+          <%= f.label :category_id, "カテゴリー", class: "h4" %><br>
+          <%= f.collection_radio_buttons :category_id, Category.all,:id, :name %>
+        </div>
+        <div class="form_input mt-2">
+          <%= f.label :genre_id, "ジャンル", class: "h4" %><br>
+          <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+        </div>
+        <div class="form_action row mt-4">
+            <%= f.submit "検索する", class: "btn btn-primary"%>
+        </div>
       <% end %>
   </div>
 </div>
 
-
-  <% @search_posts.each do |post| %>
-    <%= post.title %>
-    <%= post.category.name %>
-    <%= post.genre.name %><br>
-  <% end %>
+<div class="row">
+  <h4 class="m-4">検索結果は<%= @search_posts.count %>件です</h4>
+  <div class="col-md-12 d-flex flex-wrap">
+    <% @search_posts.each do |post| %>
+       <div class="card-deck col-md-3 mt-2 mx-auto">
+          <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
+            <div class="card shadow-lg  h-100">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3"><!--アイコン-->
+                    <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
+                  </div>
+                  <div class="col-7 ml-6">
+                    <i class="fas fa-user"></i> <%= post.user.name %>
+                  </div>
+                </div>
+                 <p class="text-right"><%= post.category.name %></p>
+                 <p class="text-right"><%= post.genre.name %></p>
+                 <h4 class="card-title border-bottom">
+                   <%= post.post_title %>
+                 </h4>
+                 <h4 class="card-title border p-1">
+                   <%= post.title %>
+                 </h4>
+                 <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
+                   <%= post.post_body %>
+                 </p>
+                 <div class="d-flex text-right">
+                     <span class="mr-3">
+                       <!--一覧画面でのいいね追加削除期日実装予定-->
+                       <!--<%# if post.favorited?(current_user) %>-->
+                       <!--   <%#= link_to post_favorite_path(@posts, post.id), method: :delete do %>-->
+                           <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+                       <!--   <%# end %>-->
+                           <span class="ml-1 text-dark"><%= post.favorites.count %></span>
+                       <!--<%# else %>-->
+                       <!--   <%#= link_to post_favorites_path(@posts, post.id), method: :post do %>-->
+                       <!--     <span><i class="fa-solid fa-heart"></i>︎</span>-->
+                       <!--   <%# end %>-->
+                       <!--     <span class="ml-1 text-dark"><%= post.favorites.count %></span>-->
+                       <!--<%# end %>-->
+                    </span>
+                    <p class="mr-1">コメント件数：<%= post.comments.count %></p>
+                 </div>
+                  <p class="card-text text-right">
+                    <%= l post.created_at, format: :short %>
+                  </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>

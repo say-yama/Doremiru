@@ -1,22 +1,30 @@
 <div class="row">
+  <h2>ジャンルの追加</h2>
   <div class="col-md-8 mx-auto">
-    <h2>ジャンルの追加</h2>
-     <%= form_with model: [:admins, @genre] do |f| %>
-        <div class="from_input">
-          <%= f.label :ジャンル名 %><br>
-          <%= f.text_field :name %>
-        </div>
-        <div class="form_action"><br>
-          <%= f.submit "登録する", class: "btn btn-primary" %>
-        </div>
-     <% end %>
-     <br>
-     <% @genres.each do |genre| %>
-       <div class="d-flex">
-          <div class="col-3"><%= genre.name %></div>
-          <div><%= link_to "削除", "/admins/genres/#{genre.id}", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-       </div>
-     <% end %>
+    <div class="row">
 
+      <div class="col-md-6">
+       <%= form_with model: [:admins, @genre] do |f| %>
+          <div class="from_input">
+            <%= f.label :ジャンル名, class: "h4" %><br>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form_action"><br>
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+          </div>
+       <% end %>
+      </div>
+
+      <div class="col-md-6">
+       <h4 class="mb-4">ジャンル 一覧</h4>
+       <% @genres.each do |genre| %>
+         <div class="d-flex align-items-center">
+            <div class="col-md-6 border-bottom"><%= genre.name %></div>
+            <div><%= link_to "削除", "/admins/genres/#{genre.id}", class: "btn btn-danger m-1 p-1", method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+         </div>
+       <% end %>
+      </div>
+
+    </div>
   </div>
 </div>

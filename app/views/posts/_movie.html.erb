@@ -29,7 +29,7 @@
 <div class="row">
   <div class="col-md-12 d-flex flex-wrap">
       <% @posts.each do|post| %>
-        <% if post.category_id == 1 %>
+        <% if post.category_id = 1 %>
       <!--映画カテゴリーのみ表示-->
           <div class="card-deck col-md-3 mt-5 mx-auto">
             <%= link_to post_path(post.id), class: "text-decoration-none" do %>
@@ -39,7 +39,7 @@
                     <div class="col-3">
                       <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border"; %><br>
                     </div>
-      
+
                     <div class="col-7 ml-6">
                       <i class="fas fa-user"></i> <%= post.user.name %>
                     </div>
@@ -78,7 +78,7 @@
                     <p class="card-text p-3">
                       <%= l post.created_at, format: :short %>
                     </p>
-                 </div>               
+                 </div>
                 </div>
               </div>
             <% end %>

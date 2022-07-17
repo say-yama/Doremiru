@@ -18,12 +18,10 @@ Rails.application.routes.draw do
     resources :reports,   only: [:index, :show, :update]
   end
 
-  namespace :user do
-  end
-
   root to: "homes#top"
+  get "/" => "homes#top"
   get "about" => "homes#about"
-  get 'searches/search'
+  get "searches/search"
   get 'genres/new'
   resources :posts do
     resources :favorites, only: [:create, :destroy]

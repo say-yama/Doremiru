@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.text "comment_body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.bigint "genre_id"
+    t.integer "user_id"
+    t.integer "category_id"
+    t.integer "genre_id"
     t.string "title", null: false
     t.string "post_title", null: false
     t.text "post_body", null: false
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
+    t.integer "user_id"
+    t.integer "post_id"
     t.integer "reporter_id", null: false
     t.integer "reported_id", null: false
     t.text "reason", null: false

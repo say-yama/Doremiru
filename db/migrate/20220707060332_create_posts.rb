@@ -1,10 +1,9 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
-      
-      t.bigint :user_id,     foreign_key: true
-      t.bigint :category_id, foreign_key: true
-      t.bigint :genre_id,    foreign_key: true 
+      t.integer :user_id
+      t.integer :category_id
+      t.integer :genre_id 
       t.string :title,         null: false
       t.string :post_title,    null: false
       t.text   :post_body,     null: false

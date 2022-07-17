@@ -1,2 +1,22 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h1 class="mb-5">アカウント詳細ページ</h1>
+  <div class="col-md-8 p-4 mx-auto border border-3">
+    <div class="d-flex">
+    　<%= image_tag @user.get_icon, class: "img-thumbnail rounded-circle border" %>
+    　<div>
+      　<h3>アカウント名：</h4>
+      　<h4>メールアドレス：</h4>
+      　<h4>ステータス：</h4>
+    　</div>
+    　<div>
+    　 <h3> <%= @user.name %></h4>
+    　 <h4> <%= @user.email %></h4>
+    　 <h4> <%= @user.status_i18n %></h4>
+    　</div>
+    </div>
+　 <div class="m-0 text-right h4"><!--ステータス変更-->
+　   <%= form_with model: @user, url: admins_user_path(@user.id), method: :patch do |f|%>
+  　   <%= f.select :status, User.statuses.keys.map {|k| [I18n.t("enums.user.status.#{k}"), k]} %>
+    　<%= f.submit "変更", class: "btn btn-primary" %>
+　   <% end %>
+　 </div>
+  </div>

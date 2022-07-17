@@ -1,2 +1,0 @@
-class Gunre < ApplicationRecord
-end

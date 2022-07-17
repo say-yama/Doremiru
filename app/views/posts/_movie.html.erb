@@ -1,0 +1,89 @@
+<!--Rank-->
+  <div class="col-md-5 mt-3 mx-auto">
+    <table class="table border bg-white">
+      <h3 class=" bg-white">
+        <span style="color:yellow;text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        映画Rank
+      </h3>
+      <thead>
+        <tr class="text-center" style="background:#FFBBFF;">
+          <th>Rank</th>
+          <th>作品名</th>
+          <th>記事の本数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @movie_ranks.first(3).each_with_index do |rank, i| %>
+          <tr class="text-center">
+            <td><%= i + 1 %></td>
+            <td><%=rank.first %></td>
+            <td><%=rank.second %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<div class="row">
+  <div class="col-md-12 d-flex flex-wrap">
+      <% @posts.each do|post| %>
+        <% if post.category_id == 3 %>
+      <!--映画カテゴリーのみ表示-->
+          <div class="card-deck col-md-3 mt-5 mx-auto">
+            <%= link_to post_path(post.id), class: "text-decoration-none" do %>
+              <div class="card shadow-lg" style="position: relative; height: 25em">
+                <div class="card-body text-dark">
+                  <div class="row">
+                    <div class="col-3">
+                      <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border"; %><br>
+                    </div>
+      
+                    <div class="col-7 ml-6">
+                      <i class="fas fa-user"></i> <%= post.user.name %>
+                    </div>
+                  </div>
+                   <p class="text-right"><%= post.category.name %></p>
+                   <p class="text-right"><%= post.genre.name %></p>
+                   <h4 class="card-title border-bottom" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
+                     <%= post.post_title %>
+                   </h4>
+                   <h4 class="card-title border p-1" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
+                     <%= post.title %>
+                   </h4>
+                   <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
+                     <%= post.post_body %>
+                   </p>
+                  <div style="position: absolute; bottom: 0;">
+                   <div class="d-flex text-right pb-5">
+                       <span class="mr-3">
+                         <!--一覧画面でのいいね追加削除期日実装予定-->
+                         <!--<%# if post.favorited?(current_user) %>-->
+                         <!--   <%#= link_to post_favorite_path(@posts, post.id), method: :delete do %>-->
+                             <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+                         <!--   <%# end %>-->
+                             <span class="ml-1 text-dark"><%= post.favorites.count %></span>
+                         <!--<%# else %>-->
+                         <!--   <%#= link_to post_favorites_path(@posts, post.id), method: :post do %>-->
+                         <!--     <span><i class="fa-solid fa-heart"></i>︎</span>-->
+                         <!--   <%# end %>-->
+                         <!--     <span class="ml-1 text-dark"><%= post.favorites.count %></span>-->
+                         <!--<%# end %>-->
+                      </span>
+                      <p class="mr-1">コメント件数：<%= post.comments.count %></p>
+                   </div>
+                 </div>
+                 <div style="position: absolute; bottom: 0; right: 0;">
+                    <p class="card-text p-3">
+                      <%= l post.created_at, format: :short %>
+                    </p>
+                 </div>               
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>

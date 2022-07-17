@@ -30,7 +30,7 @@
   <div class="col-md-12 d-flex flex-wrap">
       <% @posts.each do|post| %>
       <!--小説カテゴリーのみ表示-->
-        <% if post.category_id == 4 %>
+        <% if post.category_id == 2 %>
           <div class="card-deck col-md-3 mt-5 mx-auto">
             <%= link_to post_path(post.id), class: "text-decoration-none" do %>
               <div class="card shadow-lg" style="position: relative; height: 25em">

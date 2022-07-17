@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "/" => "homes#top"
+  post "/" => "homes#top" # デプロイ環境でroutesエラー解消のため
   get "about" => "homes#about"
   get "searches/search"
   get 'genres/new'

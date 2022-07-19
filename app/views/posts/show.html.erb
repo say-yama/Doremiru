@@ -76,7 +76,7 @@
   <div class="col-md-5">
     <div class="m-5">
       <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment_body, cols: "50", rows: "5", placeholder: "コメントをどうぞ！" %>
+        <%= f.text_area :comment_body, cols: "50", rows: "5", placeholder: "100字以内でコメントをどうぞ！" %>
         <div class="text-right"><%= f.submit "送信する", class: "btn btn-secondary" %></div>
       <% end %>
     </div>

@@ -1,0 +1,33 @@
+
+<h3>投稿する作品を選んでね</h3>
+  <%= form_with url: books_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, class: "form-control" %>
+    <%= f.submit '投稿する本を検索', class: "form-control btn btn-success mt-3" %>
+  <% end %>
+
+<% if @books.present? %>
+  <div class="col-md-12 d-flex flex-wrap">
+    <% @books.each do |book| %>
+      <div class="card-deck col-md-3 mt-5 mx-auto">
+        <%#= link_to new_post_path(book.isbn), class: "text-decoration-none" do %>
+          <div class="card shadow-lg" style="position: relative; height: 20em">
+            <div class="card-body text-dark">
+              <%= image_tag(book.image_url) %><br>
+              <h4 class="card-text mt-2 mb-4" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"><%= book.title %></h4>
+              <%#= book.author %>
+              <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
+                <%= book.item_caption %>
+              </p>
+    <%= form_with url: new_post_path(book) do %>
+    <%= hidden_field :isbn, book.isbn %>
+    <%= submit_tag 'save' %>
+    <% end %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+   <h3>検索結果は存在しません</h3>
+<% end %>
+

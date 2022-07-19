@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_072337) do
+ActiveRecord::Schema.define(version: 2022_07_19_092645) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "books", primary_key: "isbn", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "url"
+    t.string "image_url"
+    t.string "item_caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -97,6 +107,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_072337) do
     t.integer "user_id"
     t.integer "category_id"
     t.integer "genre_id"
+    t.integer "book_isbn"
     t.string "title", null: false
     t.string "post_title", null: false
     t.text "post_body", null: false

@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :category_id
       t.integer :genre_id 
+      t.integer :book_isbn
       t.string :title,         null: false
       t.string :post_title,    null: false
       t.text   :post_body,     null: false

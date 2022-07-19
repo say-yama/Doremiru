@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_120534) do
+ActiveRecord::Schema.define(version: 2022_07_08_072337) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
     t.text "comment_body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "controllers", force: :cascade do |t|
@@ -87,8 +85,6 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -107,12 +103,11 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["genre_id"], name: "index_posts_on_genre_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
     t.integer "reporter_id", null: false
     t.integer "reported_id", null: false
     t.text "reason", null: false
@@ -120,15 +115,13 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "post_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.text "profile", default: ""
+    t.text "profile"
     t.integer "status", default: 0
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -141,11 +134,4 @@ ActiveRecord::Schema.define(version: 2022_07_10_120534) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
-  add_foreign_key "favorites", "posts"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "posts", "categories"
-  add_foreign_key "posts", "genres"
-  add_foreign_key "posts", "users"
 end

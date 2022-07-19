@@ -18,12 +18,11 @@ Rails.application.routes.draw do
     resources :reports,   only: [:index, :show, :update]
   end
 
-  namespace :user do
-  end
-
   root to: "homes#top"
+  get "/" => "homes#top"
+  post "/" => "homes#top" # デプロイ環境でroutesエラー解消のため
   get "about" => "homes#about"
-  get 'searches/search'
+  get "searches/search"
   get 'genres/new'
   resources :posts do
     resources :favorites, only: [:create, :destroy]

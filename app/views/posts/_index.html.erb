@@ -128,6 +128,7 @@
                     <i class="fas fa-user"></i> <%= post.user.name %>
                   </div>
                 </div>
+                <%# binding.pry %>
                  <p class="text-right"><%= post.category.name %></p>
                  <p class="text-right"><%= post.genre.name %></p>
                  <h4 class="card-title border-bottom" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
@@ -142,18 +143,8 @@
                  <div style="position: absolute; bottom: 0;">
                    <div class="d-flex text-right pb-5">
                        <span class="mr-3">
-                         <!--一覧画面でのいいね追加削除期日実装予定-->
-                         <!--<%# if post.favorited?(current_user) %>-->
-                         <!--   <%#= link_to post_favorite_path(@posts, post.id), method: :delete do %>-->
                              <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
-                         <!--   <%# end %>-->
                              <span class="ml-1 text-dark"><%= post.favorites.count %></span>
-                         <!--<%# else %>-->
-                         <!--   <%#= link_to post_favorites_path(@posts, post.id), method: :post do %>-->
-                         <!--     <span><i class="fa-solid fa-heart"></i>︎</span>-->
-                         <!--   <%# end %>-->
-                         <!--     <span class="ml-1 text-dark"><%= post.favorites.count %></span>-->
-                         <!--<%# end %>-->
                       </span>
                       <p class="mr-1">コメント件数：<%= post.comments.count %></p>
                    </div>

@@ -53,7 +53,8 @@ ActiveRecord::Schema.define(version: 2022_07_19_092645) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "books", primary_key: "isbn", force: :cascade do |t|
+  create_table "books", force: :cascade do |t|
+    t.string "isbn"
     t.string "title"
     t.string "author"
     t.string "url"
@@ -105,12 +106,12 @@ ActiveRecord::Schema.define(version: 2022_07_19_092645) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "category_id"
-    t.integer "genre_id"
-    t.integer "book_isbn"
-    t.string "title", null: false
+    t.integer "category_id", null: false
+    t.integer "genre_id", null: false
+    t.string "book_id"
+    t.string "title"
     t.string "post_title", null: false
-    t.text "post_body", null: false
+    t.text "post_body"
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

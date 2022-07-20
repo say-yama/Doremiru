@@ -2,10 +2,10 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :genre
   belongs_to :user
-  belongs_to :book, primary_key: "isbn"
+  belongs_to :book
   has_many :favorites, dependent: :destroy
   has_many :comments
-  
+
 
   #いいねしているのがログイン中のユーザーかどうか
   def favorited?(user)

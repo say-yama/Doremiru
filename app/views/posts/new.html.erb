@@ -7,18 +7,17 @@
       <h4 class="card-text mt-2 mb-4" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">
         <%= @book.title %>
       </h4>
-      <%#= book.author %>
+      <%= @book.author %>
       <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
         <%= @book.item_caption %>
       </p>
     </div>
 <!--投稿内容入力部分-->
       <%= form_with model: @post do |f| %>
-          <!--<div class="form-input">-->
-          <!--  <%#= f.label :title, "作品名", class: "h4 m-2" %>-->
-          <!--  <%#= f.text_field :title, class: "form-control mb-3" %>-->
-          <!--</div>-->
-          <%= hidden_field_tag :isbn, @book.isbn %>
+          <div class="form-input">
+            <%= f.label :title, "作品名", class: "h4 m-2" %>
+            <%= f.text_field :title, class: "form-control mb-3" %>
+          </div>
           <div class="form_input">
             <%= f.label :category_id, "カテゴリー", class: "h4 m-2" %><br>
             <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, class: "mb-3" %>
@@ -39,6 +38,7 @@
           <div class="form_action mt-4 text-center">
               <%= f.submit "投稿する", class: "btn btn-primary w-50"%>
           </div>
+          <%= f.hidden_field :book_id, :value => @book.id %>
       <% end %>
   </div>
 </div>

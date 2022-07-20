@@ -2,17 +2,17 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @book = Book.find(params[:isbn])
+    @book = Book.find(params[:id])
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post)
-  # else
-  #   redirect_to books_search_path
-  # end
+    if@post.save!
+      redirect_to post_path(@post)
+    else
+      redirect_to books_search_path
+    end
   end
 
   def index
@@ -48,28 +48,10 @@ end
 
 private
   def post_params
-    params.require(:post).permit(:book_isbn, :category_id, :genre_id, :post_title, :post_body, :rate, )
+    params.require(:post).permit(:book_id, :category_id, :genre_id, :title, :post_title, :post_body, :rate)
   end
 
   def search
     params.permit(:title, :category_id, :genre_id)
   end
 
-  def read(result)
-    title = result["title"]
-    author = result["author"]
-    url = result["itemUrl"]
-    isbn = result["isbn"]
-    image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
-    book_genre_id = result["booksGenreId"]
-    item_caption = result["itemCaption"]
-    {
-      title: title,
-      author: author,
-      url: url,
-      isbn: isbn,
-      image_url: image_url,
-      book_genre_id: book_genre_id,
-      item_caption: item_caption
-    }
-  end

@@ -8,7 +8,7 @@
             <div class="col-2">
               <%= image_tag @post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
             </div>
-    
+
             <div class="ml-6 align-items:flex-end">
               <%= link_to user_path(@post.user_id), class: "btn", method: :get do %>
                 <h3><%= @post.user.name %></h3>

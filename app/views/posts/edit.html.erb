@@ -15,15 +15,15 @@
             <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
           </div>
           <div class="form_input">
-            <%= f.label :post_title, "タイトル" %>
+            <%= f.label :post_title, "タイトル  (30字以内)" %>
             <%= f.text_field :post_title, class: "form-control" %>
           </div>
           <div class="form_input">
-            <%= f.label :post_body, "感想" %>
+            <%= f.label :post_body, "感想 (400字以内)" %>
             <%= f.text_field :post_body, class: "form-control" %>
           </div>
 
-          <div class="form_action row">
+          <div class="form_action row mt-3">
               <%= f.submit "編集する", class: "btn btn-primary"%>
           </div>
       <% end %>

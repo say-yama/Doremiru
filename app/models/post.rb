@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments
+  
+  validates :post_title, presence: true, length: { maximum: 30 }
+  validates :post_body, length: { maximum: 400 }
 
   #いいねしているのがログイン中のユーザーかどうか
   def favorited?(user)

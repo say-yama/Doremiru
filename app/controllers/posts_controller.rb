@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
+    @book = Book.find(params[:id])
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post)
+    if @post.save!
+      redirect_to post_path(@post)
+    else
+      redirect_to books_search_path
+    end
   end
 
   def index
@@ -44,7 +48,7 @@ end
 
 private
   def post_params
-    params.require(:post).permit(:category_id, :genre_id, :title, :post_title, :post_body, :rate, )
+    params.require(:post).permit(:book_id, :category_id, :genre_id, :title, :post_title, :post_body, :rate, )
   end
 
   def search

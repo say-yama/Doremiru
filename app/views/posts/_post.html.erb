@@ -1,36 +1,6 @@
- <!--Rank-->
-  <div class="col-md-5 mt-3 mx-auto">
-    <table class="table border bg-white">
-      <h3 class=" bg-white">
-        <span style="color:yellow; text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0px 1px 0, #000 0 -1px 0, #000 -1px 0 0, #000 1px 0 0;">
-          <i class="fa-solid fa-crown"></i>
-        </span>
-        小説Rank
-      </h3>
-      <thead>
-       <tr class="text-center" style="background:#FFBBFF;">
-          <th>Rank</th>
-          <th>作品名</th>
-          <th>記事の本数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @book_ranks.first(3).each_with_index do |rank, i| %>
-          <tr class="text-center">
-            <td><%= i + 1 %></td>
-            <td><%=rank.first %></td>
-            <td><%=rank.second %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
 <div class="row">
   <div class="col-md-12 d-flex flex-wrap"> 
-      <% @posts.each do|post| %>
-      <!--小説カテゴリーのみ表示-->
-        <% if post.category_id = 2 %>
+      <% posts.each do|post| %>
         <div class="card-deck col-md-3 mt-5 mx-auto">
           <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
             <div class="card shadow-lg" style="position: relative; height: 25em">
@@ -45,7 +15,6 @@
                 </div>
                 <!--投稿作品-->
                 <div class="d-flex justify-content-around mt-2 mb-2">
-                  <%# binding.pry %>
                   <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
                   <div class="text-right">
                    <p class="text-right"><%= post.category.name %></p>
@@ -80,7 +49,6 @@
             </div>
           <% end %>
         </div>
-        <% end %>
       <% end %>
   </div>
 </div>

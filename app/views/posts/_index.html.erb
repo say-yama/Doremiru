@@ -112,52 +112,6 @@
 </div>
 <!---->
 投稿一覧
-
-<div class="row">
-  <div class="col-md-12 d-flex flex-wrap">
-      <% @posts.each do|post| %>
-        <div class="card-deck col-md-3 mt-5 mx-auto">
-          <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
-            <div class="card shadow-lg" style="position: relative; height: 25em">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-3"><!--アイコン-->
-                    <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
-                  </div>
-                  <div class="col-7 ml-6">
-                    <i class="fas fa-user"></i> <%= post.user.name %>
-                  </div>
-                </div>
-                <%# binding.pry %>
-                 <p class="text-right"><%= post.category.name %></p>
-                 <p class="text-right"><%= post.genre.name %></p>
-                 <h4 class="card-title border-bottom" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
-                   <%= post.post_title %>
-                 </h4>
-                 <h4 class="card-title border p-1" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
-                   <%= post.title %>
-                 </h4>
-                 <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
-                   <%= post.post_body %>
-                 </p>
-                 <div style="position: absolute; bottom: 0;">
-                   <div class="d-flex text-right pb-5">
-                       <span class="mr-3">
-                             <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
-                             <span class="ml-1 text-dark"><%= post.favorites.count %></span>
-                      </span>
-                      <p class="mr-1">コメント件数：<%= post.comments.count %></p>
-                   </div>
-                 </div>
-                 <div style="position: absolute; bottom: 0; right: 0;">
-                    <p class="card-text p-3">
-                      <%= l post.created_at, format: :short %>
-                    </p>
-                 </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-  </div>
-</div>
+<!--投稿一覧-->
+ <%= render "posts/post", posts: @posts %>
+ <!---->

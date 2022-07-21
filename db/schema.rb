@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_092645) do
     t.string "author"
     t.string "url"
     t.string "image_url"
-    t.string "item_caption"
+    t.text "item_caption"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

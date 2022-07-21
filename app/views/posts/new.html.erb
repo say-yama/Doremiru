@@ -16,7 +16,7 @@
       <%= form_with model: @post do |f| %>
           <div class="form-input">
             <%= f.label :title, "作品名", class: "h4 m-2" %>
-            <%= f.text_field :title, class: "form-control mb-3" %>
+            <%= f.text_field :title, class: "form-control mb-3", :placeholder => "作品名を入力してね（ランキングや検索に使用されるよ)" %>
           </div>
           <div class="form_input">
             <%= f.label :category_id, "カテゴリー", class: "h4 m-2" %><br>

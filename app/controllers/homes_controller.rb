@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-   @posts = Post.all
+   @posts = Post.all.order(created_at: :desc)
    @ranks = Post.group('title').order('count_all DESC').count
   # 開発環境下
   @movie_ranks = Post.group('title').having('category_id = 1').order('count_all DESC').count

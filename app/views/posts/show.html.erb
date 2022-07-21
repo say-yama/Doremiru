@@ -87,7 +87,7 @@
         <div class="text-right"><%= f.submit "送信する", class: "btn btn-secondary" %></div>
       <% end %>
     </div>
-      <% @post.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <div class="border border-2 mb-3 p-3">
           <div class="d-flex">
             <p class="col-2"><%= image_tag comment.user.get_icon, class: "img-thumbnail rounded-circle border" %></p>
@@ -96,7 +96,7 @@
             <% end %>
           </div>
           <%= comment.comment_body %><br>
-          <p class="text-right m-0"><%= l comment.created_at, format: :short %></p>
+          <p class="text-right m-0"><%= l comment.created_at %></p>
            <% if comment.user == current_user %>
              <div class="text-right">
                <%#= link_to"編集", edit_comment_path(@post, comment), class: "btn btn-primary" %>

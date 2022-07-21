@@ -11,8 +11,12 @@ class Admins::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to admins_user_path(user)
+    if user.update(user_params)
+      redirect_to admins_user_path(user)
+    else
+      flash[:notice]="編集に失敗しました。"
+      redirect_to admins_user_path(user)
+    end
   end
 
 private

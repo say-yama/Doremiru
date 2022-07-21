@@ -14,9 +14,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to user_path(user.id)
+    user = current_user
+    if user.update(user_params)
+      redirect_to user_path(user.id)
+    else
+      flash[:notice]="編集に失敗しました。文字数は50文字までにしてください"
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def favorites

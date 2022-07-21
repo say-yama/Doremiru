@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
     if @report.save
       redirect_to user_path(@user), notice: "通報を受付いたしました。"
     else
+      flash[:notice] = "エラーが発生しました"
       render"new"
     end
   end

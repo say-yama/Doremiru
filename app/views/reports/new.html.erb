@@ -2,8 +2,10 @@
 
 <%= form_with model:[@user, @report] do |f| %>
   <div class="form-group">
-    <%= f.text_area :reason, rows:'3', class:"form-control" %>
+    <%= f.label :readon, "通報理由 (200字以内)" %>
+    <%= f.text_area :reason, rows: '3', class: "form-control" %>
+    <%= f.label :url, "違反投稿のURL" %>
     <%= f.text_field :url, class: "form-control" %>
-    <%= f.submit "通報する", class: "btn btn-danger" %>
+    <%= f.submit "通報する", class: "btn btn-danger mt-3" %>
   </div>
 <% end %>

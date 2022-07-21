@@ -5,9 +5,11 @@ class Post < ApplicationRecord
   belongs_to :book
   has_many :favorites, dependent: :destroy
   has_many :comments
-  
+
   validates :post_title, presence: true, length: { maximum: 30 }
   validates :post_body, length: { maximum: 400 }
+  scope :comics, ->{ where(category_id: 2) }
+  scope :books, ->{ where(category_id: 1) }
 
 
   #いいねしているのがログイン中のユーザーかどうか

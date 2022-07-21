@@ -6,7 +6,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]).
+    @user = User.find(params[:id])
   end
 
   def update
@@ -19,5 +19,5 @@ private
   def user_params
     params.require(:user).permit(:id, :name, :status, :created_at)
   end
-
+  
 end

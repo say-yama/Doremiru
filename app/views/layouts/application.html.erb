@@ -69,7 +69,9 @@
                  <%= link_to"作品サーチ", search_path, class: "nav-item rounded btn btn-light mr-4" %>
                 </li>
                 <li>
-                 <%= link_to"新規投稿", new_post_path, class: "nav-item rounded btn btn-light mr-4" %>
+                  <!--映画API導入後-->
+                 <%#= link_to"新規投稿",  post_select_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"新規投稿", books_search_path, class: "nav-item rounded btn btn-light mr-4" %>
                 </li>
                 <li>
                  <%= link_to"マイページ", user_path(current_user), class: "nav-item rounded btn btn-light mr-4" %>
@@ -110,7 +112,8 @@
      </div>
     <footer class="footer bg-info fixed-bottom" style="height: 40px;">
       <div class=" d-flex align-items-center justify-content-center" style="height: 40px;">
-        <div>どれみる?</div>
+        <div class="bg-white rounded">どれみる?</div>
+    　　<%= image_tag"developers_logo.svg", size: "150x40" %>
         <%= link_to"管理者はこちら", new_admin_session_path, class: "pl-1" %>
       </div>
     </footer>

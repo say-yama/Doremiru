@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  before_action :set_user, only: [:favorites]
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
     # if @posts.nil?
     #   "投稿はまだありません"
     # end

@@ -7,62 +7,65 @@
   <div class="col-md-8">
 
     <h2>マイページ</h2>
-    <% @posts.each do|post| %>
-       <%= link_to post_path(post.id), class: "text-decoration-none text-dark" do %>
-         <div class="card shadow-lg col-md-10 mx-auto mb-5">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2">
-                  <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
-                </div>
-
-                <div class="col-7 ml-6">
-                  <i class="fas fa-user"></i> <%= post.user.name %>
-                </div>
-              </div>
-                <!--投稿作品-->
-                <div class="d-flex justify-content-around mt-2 mb-2">
-                  <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
-                  <div class="text-right">
-                   <p class="text-right"><%= post.category.name %></p>
-                   <p class="text-right"><%= post.genre.name %></p>
+    <% if @posts.present? %>
+      <% @posts.each do|post| %>
+         <%= link_to post_path(post.id), class: "text-decoration-none text-dark" do %>
+           <div class="card shadow-lg col-md-10 mx-auto mb-5">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-2">
+                    <%= image_tag post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
+                  </div>
+  
+                  <div class="col-7 ml-6">
+                    <i class="fas fa-user"></i> <%= post.user.name %>
                   </div>
                 </div>
-                 <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
-                   <%= post.book.title %>
-                 </h5>
-                 <!---->
-               <h2 class="card-title border-bottom">
-                 <%= post.post_title %>
-               </h2>
-               <h4 class="card-title border p-1">
-                 <%= post.title %>
-               </h4>
-               <p class="card-text">
-                 <%= post.post_body %>
-               </p>
-               <div class="d-flex justify-content-between mt-3">
-                 <div class="d-flex text-right">
-                    <span class="mr-3">
-                     <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
-                     <span class="ml-1 text-dark"><%= post.favorites.count %></span>
-                    </span>
-                    <p class="mr-1">コメント件数：<%= post.comments.count %></p>
+                  <!--投稿作品-->
+                  <div class="d-flex justify-content-around mt-2 mb-2">
+                    <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
+                    <div class="text-right">
+                     <p class="text-right"><%= post.category.name %></p>
+                     <p class="text-right"><%= post.genre.name %></p>
+                    </div>
+                  </div>
+                   <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
+                     <%= post.book.title %>
+                   </h5>
+                   <!---->
+                 <h2 class="card-title border-bottom">
+                   <%= post.post_title %>
+                 </h2>
+                 <h4 class="card-title border p-1">
+                   <%= post.title %>
+                 </h4>
+                 <p class="card-text">
+                   <%= post.post_body %>
+                 </p>
+                 <div class="d-flex justify-content-between mt-3">
+                   <div class="d-flex text-right">
+                      <span class="mr-3">
+                       <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
+                       <span class="ml-1 text-dark"><%= post.favorites.count %></span>
+                      </span>
+                      <p class="mr-1">コメント件数：<%= post.comments.count %></p>
+                   </div>
+                   <div class="d-flex">
+                     <p class="card-text"> <%= l post.created_at %> </p>
+                     <% if @user == current_user %>
+                       <div class="text-right ml-2">
+                        <%= link_to"削除", post_path(post), class: "btn btn-danger", method: :delete %>
+                       </div>
+                     <% end %>
+                   </div>
                  </div>
-                 <div class="d-flex">
-                   <p class="card-text"> <%= l post.created_at %> </p>
-                   <% if @user == current_user %>
-                     <div class="text-right ml-2">
-                      <%= link_to"削除", post_path(post), class: "btn btn-danger", method: :delete %>
-                     </div>
-                   <% end %>
-                 </div>
-               </div>
+              </div>
             </div>
-          </div>
-       <% end %>
+         <% end %>
+      <% end %>
+    <% else %>
+      <h4>投稿はまだありません</h4>
     <% end %>
-
 　</div>
 </div>
 

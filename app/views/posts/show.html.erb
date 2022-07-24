@@ -9,7 +9,7 @@
               <%= image_tag @post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
             </div>
 
-            <div class="ml-6 align-items:flex-end">
+            <div class="ml-6 align-items:flex-end hover2">
               <%= link_to user_path(@post.user_id), class: "btn", method: :get do %>
                 <h4><%= @post.user.name %></h4>
               <% end %>
@@ -91,7 +91,7 @@
         <div class="border border-2 mb-3 p-3">
           <div class="d-flex">
             <p class="col-2"><%= image_tag comment.user.get_icon, class: "img-thumbnail rounded-circle border" %></p>
-            <%= link_to user_path(comment.user), class: "text-dark", method: :get do %>
+            <%= link_to user_path(comment.user), class: "btn hover2", method: :get do %>
               <%= comment.user.name %>
             <% end %>
           </div>

@@ -29,10 +29,9 @@
     <header class="bg-info">
       <div class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container">
-            <a class="navbar-brand bg-white rounded p-0 d-flex align-items-center" href="/">
-                <h1 class="font-weight-bold m-0">どれみる</h1><%= image_tag"megane.png", size: "180x50" %>
-            </a>
+          <a class="navbar-brand bg-white rounded p-0 d-flex align-items-center" href="/">
+            <h1 class="font-weight-bold m-0">どれみる</h1><%= image_tag"megane.png", size: "180x50" %>
+          </a>
           <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,71 +40,72 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li>
-                 <%= link_to"カテゴリー", admins_categories_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"カテゴリー", admins_categories_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"ジャンル", admins_genres_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"ジャンル", admins_genres_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"作品サーチ", search_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"作品サーチ", search_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"会員一覧", admins_users_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"会員一覧", admins_users_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"通報一覧", admins_reports_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"通報一覧", admins_reports_path, class: "nav-item hover" %>
                 </li>
                  <li>
-                 <%= link_to"ログアウト", destroy_admin_session_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"ログアウト", destroy_admin_session_path, class: "nav-item hover" %>
                 </li>
               <% elsif user_signed_in? %>
-                <li class=>
-                 <%= link_to"TOP", root_path, class: "nav-item rounded btn btn-light mr-4"%>
+                <li>
+                 <%= link_to"TOP", root_path, class: "nav-item hover"%>
                 </li>
-                <li class=>
-                 <%= link_to"About", about_path, class: "nav-item rounded btn btn-light mr-4"%>
+                <li></li>
+                 <%= link_to"About", about_path, class: "nav-item hover"%>
                 </li>
                 <li>
-                 <%= link_to"作品サーチ", search_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"作品サーチ", search_path, class: "nav-item hover" %>
                 </li>
                 <li>
                   <!--映画API導入後-->
-                 <%#= link_to"新規投稿",  post_select_path, class: "nav-item rounded btn btn-light mr-4" %>
-                 <%= link_to"新規投稿", books_search_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%#= link_to"新規投稿",  post_select_path, class: "nav-item hover" %>
+                 <%= link_to"新規投稿", books_search_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"マイページ", user_path(current_user), class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"マイページ", user_path(current_user), class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"ログアウト", destroy_user_session_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"ログアウト", destroy_user_session_path, class: "nav-item hover" %>
                 </li>
               <% else %>
-                <li class=>
-                 <%= link_to"TOP", root_path, class: "nav-item rounded btn btn-light mr-4"%>
+                <li>
+                 <%= link_to"TOP", root_path, class: "nav-item hover"%>
                 </li>
                 <li>
-                 <%= link_to"About", about_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"About", about_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"作品サーチ", search_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"作品サーチ", search_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"新規登録", new_user_registration_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"新規登録", new_user_registration_path, class: "nav-item hover" %>
                 </li>
                 <li>
-                 <%= link_to"ログイン", new_user_session_path, class: "nav-item rounded btn btn-light mr-4" %>
+                 <%= link_to"ログイン", new_user_session_path, class: "nav-item hover" %>
                 </li>
               <% end %>
             </ul>
            </div>
-          </div>
         </nav>
       </div>
     </header>
      <div class="col-md-12">
         <div class="m-5">
           <div class="notifications">
-            <div class="h4 text-danger"><%= flash[:notice] %></div>
+            <div class="h4 text-danger">
+              <%= flash[:notice] %>
+              </div>
           </div>
            <%= yield %>
         </div>

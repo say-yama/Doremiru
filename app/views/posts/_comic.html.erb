@@ -32,7 +32,7 @@
       <% @posts.each do|post| %>
       <!--コミックカテゴリーのみ表示-->
         <% if post.category_id == 2 %>
-        <div class="card-deck col-md-3 mt-5 mx-auto">
+        <div class="card-deck col-md-3 mt-5 mx-auto hover10">
           <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
             <div class="card shadow-lg" style="position: relative; height: 25em">
               <div class="card-body">

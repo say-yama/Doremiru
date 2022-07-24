@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   # 管理者と会員がどちらもログインしてなかったら
-  before_action :authenticate_user!, except: [:top, :about, :search, :show], unless: :admin_signed_in?
+  before_action :authenticate_user!, except: [:top, :about, :search, :show], unless: :admin_signed_in?, notice: "ログイン済の方しか投稿できません"
   
   # 管理者ログインせずに管理人ページにアクセスした時
   def authenticate_admin

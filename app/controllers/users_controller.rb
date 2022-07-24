@@ -2,10 +2,7 @@ class UsersController < ApplicationController
  before_action :set_user, only: [:favorites]
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc)
-    # if @posts.nil?
-    #   "投稿はまだありません"
-    # end
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def edit
@@ -24,8 +21,9 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    favorites = Favorite.where(user_id: @user.id).order(created_at: :desc).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
   end
 
   def withdrawal

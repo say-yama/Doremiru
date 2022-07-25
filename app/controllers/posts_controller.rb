@@ -46,7 +46,8 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search_posts = Post.search(params)
+    @search_count = Post.search(params)
+    @search_posts = Post.search(params).page(params[:page])
   end
 
 end

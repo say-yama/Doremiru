@@ -35,6 +35,7 @@
        <h4 class="card-title border p-1">
          <%= @post.title %>
        </h4>
+      <div id="star" data-score="<%= @post.rate %>">評価：</div>
        <p class="card-text">
          <%= @post.post_body %>
        </p>
@@ -112,3 +113,15 @@
   </div>
 
 </div>
+
+<script>
+   $('#star').raty({
+     size: 36,
+     starOff:  '<%= asset_path('star-off.png') %>',
+     starOn : '<%= asset_path('star-on.png') %>',
+     starHalf : '<%= asset_path('star-half.png') %>',
+     scoreName: 'post[rate]',
+     half: true,
+     readOnly: true,
+   });
+</script>

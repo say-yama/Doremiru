@@ -4,16 +4,16 @@ class CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
     if comment.save
-       redirect_to post_path(post)
+      redirect_to post_path(post)
     else
-      flash[:notice] = "エラーが発生しました。" 
+      flash[:notice] = "エラーが発生しました。"
       redirect_to post_path(post)
     end
   end
-   
+
   def edit
   end
-  
+
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
     redirect_to post_path(post)
   end
 
-private
+  private
+
   def comment_params
     params.require(:comment).permit(:comment_body)
   end
-
 end

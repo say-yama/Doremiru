@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- before_action :set_user, only: [:favorites]
+  before_action :set_user, only: [:favorites]
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if user.update(user_params)
       redirect_to user_path(user.id)
     else
-      flash[:notice]="編集に失敗しました。文字数は50文字までにしてください"
+      flash[:notice] = "編集に失敗しました。文字数は50文字までにしてください"
       redirect_to edit_user_path(current_user)
     end
   end
@@ -27,13 +27,12 @@ class UsersController < ApplicationController
   end
 
   def withdrawal
-      @user = current_user
+    @user = current_user
   end
 
   def deleted
     @user = User.find(params[:id])
-    if
-      @user.update(status: 1)
+    if @user.update(status: 1)
       reset_session
       flash[:notice] = "退会処理を実行いたしました"
       redirect_to root_path
@@ -43,8 +42,8 @@ class UsersController < ApplicationController
     end
   end
 
+  private
 
-private
   def set_user
     @user = User.find(params[:id])
   end
@@ -53,4 +52,3 @@ private
     params.require(:user).permit(:profile, :image)
   end
 end
-

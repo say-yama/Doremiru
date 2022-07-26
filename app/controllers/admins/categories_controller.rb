@@ -1,6 +1,6 @@
 class Admins::CategoriesController < ApplicationController
-   before_action :authenticate_admin
-   
+  before_action :authenticate_admin
+
   def index
     @category = Category.new
     @categories = Category.all
@@ -24,5 +24,3 @@ private
 def category_params
   params.require(:category).permit(:name)
 end
-
-

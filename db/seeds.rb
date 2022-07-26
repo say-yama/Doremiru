@@ -9,26 +9,26 @@ Admin.create!(
   name: "管理者",
   email: "dore@miru",
   password: "doread",
-  )
+)
 
 Category.create!(
   [
-    {name: "小説"},
-    {name: "マンガ"}
+    { name: "小説" },
+    { name: "マンガ" },
   ]
-  )
-  
+)
+
 Genre.create!(
   [
-    {name: "アクション"},
-    {name: "ミステリー"},
-    {name: "ファンタジー"},
-    {name: "SF"},
-    {name: "恋愛"},
-    {name: "ホラー・サスペンス"},
-    {name: "歴史"},
-    {name: "ヒューマン"},
-    {name: "コメディ"},
-    {name: "学習"}
+    { name: "アクション" },
+    { name: "ミステリー" },
+    { name: "ファンタジー" },
+    { name: "SF" },
+    { name: "恋愛" },
+    { name: "ホラー・サスペンス" },
+    { name: "歴史" },
+    { name: "ヒューマン" },
+    { name: "コメディ" },
+    { name: "学習" },
   ]
-  )
+)

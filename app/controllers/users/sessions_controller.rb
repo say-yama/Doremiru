@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-before_action :reject_user, only: :create
+  before_action :reject_user, only: :create
   # GET /resource/sign_in
   # def new
   #   super
@@ -25,11 +25,10 @@ before_action :reject_user, only: :create
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-protected
+  protected
 
   # ログイン不可の時のアクション
   def reject_user
-
     @user = User.find_by(email: params[:user][:email])
     return if @user.nil?
 
@@ -39,7 +38,7 @@ protected
     end
     if @user.deactivate?
       flash[:notice] = "このアカウントは通報により停止されています"
-      return redirect_to new_user_session_path
+      redirect_to new_user_session_path
     end
   end
 end

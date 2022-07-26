@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post =Post.find(params[:id])
+    post = Post.find(params[:id])
     if post.destroy
       redirect_to root_path
     else
@@ -49,14 +49,14 @@ class PostsController < ApplicationController
     @search_count = Post.search(params)
     @search_posts = Post.search(params).page(params[:page])
   end
-
 end
 
 private
-  def post_params
-    params.require(:post).permit(:book_id, :category_id, :genre_id, :title, :post_title, :post_body, :rate, )
-  end
 
-  def search
-    params.permit(:title, :category_id, :genre_id)
-  end
+def post_params
+  params.require(:post).permit(:book_id, :category_id, :genre_id, :title, :post_title, :post_body, :rate,)
+end
+
+def search
+  params.permit(:title, :category_id, :genre_id)
+end

@@ -43,6 +43,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -62,11 +63,11 @@ group :production do
 end
 
 gem "devise"
-gem "kaminari","~> 1.2.1"
+gem "kaminari", "~> 1.2.1"
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
 gem "bootstrap", "~> 4.3.1"
 gem "jquery-rails"
 gem "rails-i18n"
-gem "enum_help" 
+gem "enum_help"
 gem "devise-i18n"
 gem "rakuten_web_service"

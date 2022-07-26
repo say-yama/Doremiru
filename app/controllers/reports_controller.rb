@@ -13,12 +13,12 @@ class ReportsController < ApplicationController
       redirect_to user_path(@user), notice: "通報を受付いたしました。"
     else
       flash[:notice] = "エラーが発生しました"
-      render"new"
+      render "new"
     end
   end
-  
+
   private
-  
+
   def report_params
     params.require(:report).permit(:reason, :url, :user_id, :post_id)
   end

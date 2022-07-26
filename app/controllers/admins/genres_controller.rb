@@ -1,6 +1,6 @@
 class Admins::GenresController < ApplicationController
-   before_action :authenticate_admin
-   
+  before_action :authenticate_admin
+
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -11,7 +11,7 @@ class Admins::GenresController < ApplicationController
     @genre.save
     redirect_to admins_genres_path
   end
-  
+
   def destroy
     genre = Genre.find(params[:id])
     genre.destroy

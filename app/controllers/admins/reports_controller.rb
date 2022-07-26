@@ -1,6 +1,6 @@
 class Admins::ReportsController < ApplicationController
-   before_action :authenticate_admin
-   
+  before_action :authenticate_admin
+
   def index
     @reports = Report.all.order(created_at: :DESC)
     @reports = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
@@ -12,15 +12,15 @@ class Admins::ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    if @report.update(report_params) 
+    if @report.update(report_params)
       flash[:notice] = "対応ステータスを更新しました。"
       redirect_to admins_report_path(@report)
     end
   end
 
-private
-  def report_params
-  params.require(:report).permit(:status)
-  end
+  private
 
+  def report_params
+    params.require(:report).permit(:status)
+  end
 end

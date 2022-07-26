@@ -14,11 +14,25 @@
                   </div>
                 </div>
                 <!--投稿作品-->
-                <div class="d-flex justify-content-around mt-2 mb-2">
+                <div class="d-flex justify-content-between mt-2 mb-2">
                   <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
                   <div class="text-right">
                    <p class="text-right"><%= post.category.name %></p>
                    <p class="text-right"><%= post.genre.name %></p>
+                  <!--星レビュー表示-->
+                  <div id="star_<%= post.id %>"></div>
+                    <script>
+                      $('#star_<%= post.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,  
+                        readOnly: true,
+                        score: <%= post.rate %>,
+                      });
+                    </script>  
+                  <!---->
                   </div>
                 </div>
                  <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">

@@ -27,6 +27,20 @@
                     <div class="text-right">
                      <p class="text-right"><%= post.category.name %></p>
                      <p class="text-right"><%= post.genre.name %></p>
+                     <!--星レビュー表示-->
+                     <div id="star-<%= post.id %>"></div>
+                      <script>
+                        $('#star-<%= post.id %>').raty({
+                          size: 36,
+                          starOff:  '<%= asset_path('star-off.png') %>',
+                          starOn : '<%= asset_path('star-on.png') %>',
+                          starHalf: '<%= asset_path('star-half.png') %>',
+                          half: true,
+                          readOnly: true,
+                          score: <%= post.rate %>,
+                        });
+                      </script>  
+                      <!---->         
                     </div>
                   </div>
                    <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
@@ -72,3 +86,14 @@
 　</div>
 </div>
 
+<script>
+   $('#star').raty({
+     size: 36,
+     starOff:  '<%= asset_path('star-off.png') %>',
+     starOn : '<%= asset_path('star-on.png') %>',
+     starHalf : '<%= asset_path('star-half.png') %>',
+     scoreName: 'post[rate]',
+     half: true,
+     readOnly: true,
+   });
+</script>

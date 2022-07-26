@@ -5,7 +5,7 @@
   </div>
   <!---->
     <div class="col-md-8">
-  
+
       <h1>いいね一覧</h1>
       <% if @favorite_posts.present? %>
         <% @favorite_posts.each do |favorite_post| %>
@@ -16,7 +16,7 @@
                     <div class="col-2">
                       <%= image_tag favorite_post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
                     </div>
-    
+
                     <div class="col-7 ml-6">
                       <i class="fas fa-user"></i> <%= favorite_post.user.name %>
                     </div>
@@ -27,6 +27,20 @@
                     <div class="text-right">
                      <p class="text-right"><%= favorite_post.category.name %></p>
                      <p class="text-right"><%= favorite_post.genre.name %></p>
+                     <!--星レビュー表示-->
+                     <div id="star-<%= favorite_post.id %>"></div>
+                      <script>
+                        $('#star-<%= favorite_post.id %>').raty({
+                          size: 36,
+                          starOff:  '<%= asset_path('star-off.png') %>',
+                          starOn : '<%= asset_path('star-on.png') %>',
+                          starHalf: '<%= asset_path('star-half.png') %>',
+                          half: true,
+                          readOnly: true,
+                          score: <%= favorite_post.rate %>,
+                        });
+                      </script>  
+                      <!---->
                     </div>
                   </div>
                    <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">

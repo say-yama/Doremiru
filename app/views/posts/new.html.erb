@@ -39,7 +39,7 @@
             <%= f.text_area :post_body, class: "form-control", :placeholder => "感想なしでも投稿できるよ。まずは投稿してみよう！" %>
           </div>
 
-          <div class="form_action mt-4 text-center">
+          <div class="form_action mt-4 mb-5 text-center">
               <%= f.submit "投稿する", class: "btn btn-primary w-50"%>
           </div>
           <%= f.hidden_field :book_id, :value => @book.id %>

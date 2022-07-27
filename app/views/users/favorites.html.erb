@@ -8,80 +8,16 @@
 
       <h1>いいね一覧</h1>
       <% if @favorite_posts.present? %>
-        <% @favorite_posts.each do |favorite_post| %>
-           <%= link_to post_path(favorite_post.id), class: "text-decoration-none text-dark" do %>
-             <div class="card shadow-lg col-md-10 mx-auto mb-5">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-2">
-                      <%= image_tag favorite_post.user.get_icon, class: "img-thumbnail rounded-circle border" %><br>
-                    </div>
-
-                    <div class="col-7 ml-6">
-                      <i class="fas fa-user"></i> <%= favorite_post.user.name %>
-                    </div>
-                  </div>
-                <!--投稿作品-->
-                  <div class="d-flex justify-content-around mt-2 mb-2">
-                    <div class="img-thumbnail"><%= image_tag(favorite_post.book.image_url) %></div>
-                    <div class="text-right">
-                     <p class="text-right"><%= favorite_post.category.name %></p>
-                     <p class="text-right"><%= favorite_post.genre.name %></p>
-                     <!--星レビュー表示-->
-                     <div id="star-<%= favorite_post.id %>"></div>
-                      <script>
-                        $('#star-<%= favorite_post.id %>').raty({
-                          size: 36,
-                          starOff:  '<%= asset_path('star-off.png') %>',
-                          starOn : '<%= asset_path('star-on.png') %>',
-                          starHalf: '<%= asset_path('star-half.png') %>',
-                          half: true,
-                          readOnly: true,
-                          score: <%= favorite_post.rate %>,
-                        });
-                      </script>  
-                      <!---->
-                    </div>
-                  </div>
-                   <h5 class="card-title border" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;">
-                     <%= favorite_post.book.title %>
-                   </h5>
-                 <!---->
-                   <h2 class="card-title border-bottom">
-                     <%= favorite_post.post_title %>
-                   </h2>
-                   <h4 class="card-title border p-1">
-                     <%= favorite_post.title %>
-                   </h4>
-                   <p class="card-text">
-                     <%= favorite_post.post_body %>
-                   </p>
-                   <div class="d-flex justify-content-between mt-3">
-                     <div class="d-flex text-right">
-                        <span class="mr-3">
-                         <span style="color:red;"><i class="fa-solid fa-heart"></i>︎</span>
-                         <span class="ml-1 text-dark"><%= favorite_post.favorites.count %></span>
-                        </span>
-                        <p class="mr-1">コメント件数：<%= favorite_post.comments.count %></p>
-                     </div>
-                     <div class="d-flex">
-                       <p class="card-text"> <%= l favorite_post.created_at %> </p>
-                       <% if @user == favorite_post.user %>
-                         <div class="text-right ml-2">
-                          <%= link_to"削除", post_path(favorite_post), class: "btn btn-danger", method: :delete %>
-                         </div>
-                       <% end %>
-                     </div>
-                   </div>
-                </div>
-              </div>
-           <% end %>
+      <!--投稿一覧-->
+        <% @favorite_posts.each do |post| %>
+           <%= render "users/post", post: post %>
         <% end %>
+      <!---->
       <% else %>
         <p>いいねした投稿はありません</p>
       <% end %>
-    </div>
     <div class="mt-5">
-    <%= paginate @favorite_posts, theme: 'bootstrap-5' %>
+        <%= paginate @favorite_posts, theme: 'bootstrap-5' %>
+    </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md-12 d-flex flex-wrap">
+  <div class="d-flex flex-wrap">
       <% posts.each do|post| %>
-        <div class="card-deck col-md-3 mt-5 mx-auto hover10 ">
+        <div class="card-deck mt-5 mx-auto hover10 ">
           <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
-            <div class="card shadow-lg card-size">
+            <div class="card shadow-lg post-size">
               <div class="card-body">
                 <div class="row">
                   <div class="col-3"><!--アイコン-->

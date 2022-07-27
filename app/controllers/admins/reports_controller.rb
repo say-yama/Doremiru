@@ -2,7 +2,7 @@ class Admins::ReportsController < ApplicationController
   before_action :authenticate_admin
 
   def index
-    @reports = Report.all.order(created_at: :DESC)
+    @reports = Report.all.order(created_at: :DESC) #新着順
     @reports = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
   end
 

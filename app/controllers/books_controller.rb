@@ -1,23 +1,19 @@
 class BooksController < ApplicationController
   def books_search
-    # ここで空の配列を作ります
     @books = []
     @title = params[:keyword]
     if @title.present?
-      # この部分でresultsに楽天APIから取得したデータ（jsonデータ）を格納します。
-      # 今回は書籍のタイトルを検索して、一致するデータを格納するように設定しています。
+      # 楽天APIから検索取得したデータ（jsonデータ）
       results = RakutenWebService::Books::Book.search({
         title: @title,
       })
-      # この部分で「@books」にAPIからの取得したJSONデータを格納していきます。
-      # read(result)については、privateメソッドとして、設定しております。
+      # APIからの取得したJSONデータを格納
       results.each do |result|
         book = Book.new(read(result))
         @books << book
       end
     end
-    # 「@books」内の各データをそれぞれ保存していきます。
-    # すでに保存済の本は除外するためにunlessの構文を記載しています。
+    # 個別に保存。保存済みは除外
     @books.each do |book|
       unless Book.all.include?(book)
         book.save
@@ -27,7 +23,6 @@ class BooksController < ApplicationController
 
   private
 
-  # 「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
   def read(result)
     title = result["title"]
     author = result["author"]

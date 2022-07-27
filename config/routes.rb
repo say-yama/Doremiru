@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :destroy]
   end
+  get "search" => "posts#search"
+  get "books_search" => "books#books_search"
+  post "/posts/new" => "posts#new"
   resources :users, only: [:show, :edit, :update, :favorites, :check, :withdrawal] do
     resources :reports, only: [:new, :create]
     member do
@@ -36,10 +39,6 @@ Rails.application.routes.draw do
     end
   end
   patch "users/:id" => "users#update"
-  get "search" => "posts#search"
-  get "books_search" => "books#books_search"
-  post "/posts/new" => "posts#new"
-  get "post_select" => "posts#select"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

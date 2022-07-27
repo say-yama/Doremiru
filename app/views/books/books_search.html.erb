@@ -1,13 +1,14 @@
 <h2 class="mb-4">BOOK・COMIC</h4>
 
 <div class="col-md-10 mx-auto">
+  <!--楽天APIでの検索-->
   <h3>投稿する作品名を入力してね</h3>
     <%= form_with url: books_search_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, class: "form-control" %>
       <%= f.submit '投稿する本を検索', class: "form-control btn btn-success mt-3" %>
     <% end %>
 </div>
-
+<!--本のデータがあった時-->
 <% if @books.present? %>
   <h5 class="mt-2">検索結果は <%= @books.count %> 件です</h5>
   <div class="col-md-12 d-flex flex-wrap">
@@ -16,25 +17,24 @@
           <div class="card shadow-lg" style="position: relative; height: 20em">
             <div class="card-body text-dark">
               <a class="d-flex justify-content-between">
-     <!--BOOKデータを新規投稿POSTに渡す         -->
-      <%= form_with url: new_post_path(book.id), local: true do |f| %>
-      <%= f.hidden_field :id, :value => book.id %>
-              <%= image_tag(book.image_url) %>
-      <%= f.submit "選択" %>
-      <!---->
+              <!--BOOKデータを新規投稿POSTに渡す         -->
+                <%= form_with url: new_post_path(book.id), local: true do |f| %>
+                <%= f.hidden_field :id, :value => book.id %>
+                        <%= image_tag(book.image_url) %>
+                <%= f.submit "選択" %>
+              <!---->
               </a>
-              <h4 class="card-text mt-2 mb-4" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;"><%= book.title %></h4>
-              <%#= book.author %>
-              <p class="card-text" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;">
+              <h4 class="card-text mt-2 mb-4 hidden2"><%= book.title %></h4>
+              <p class="card-text hidden3">
                 <%= book.item_caption %>
               </p>
             </div>
           </div>
       </div>
       <% end %>
-    <!---->
     <% end %>
   </div>
+<!---->
 <% else %>
    <h3 class="mt-3">検索結果は存在しません</h3>
 <% end %>

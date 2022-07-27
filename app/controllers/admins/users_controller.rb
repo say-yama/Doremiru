@@ -11,6 +11,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def update
+    # 会員ステータスの変更
     user = User.find(params[:id])
     if user.update(user_params)
       redirect_to admins_user_path(user)

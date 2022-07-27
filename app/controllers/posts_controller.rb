@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   end
 
   def search
+    # モデルに定義
     @search_count = Post.search(params)
     @search_posts = Post.search(params).page(params[:page])
   end

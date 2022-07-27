@@ -2,7 +2,7 @@
   <h2>ジャンルの追加</h2>
   <div class="col-md-8 mx-auto">
     <div class="row">
-
+<!--ジャンルの登録フォーム-->
       <div class="col-md-6">
        <%= form_with model: [:admins, @genre] do |f| %>
           <div class="from_input">
@@ -14,7 +14,7 @@
           </div>
        <% end %>
       </div>
-
+<!--ジャンルの一覧画面-->
       <div class="col-md-6">
        <h4 class="mb-4">ジャンル 一覧</h4>
        <% @genres.each do |genre| %>

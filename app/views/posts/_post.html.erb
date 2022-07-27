@@ -20,18 +20,19 @@
                    <p class="text-right"><%= post.category.name %></p>
                    <p class="text-right"><%= post.genre.name %></p>
                   <!--星レビュー表示-->
-                  <div id="star_<%= post.id %>"></div>
+                  <!--星の重複回避のためidをpostsテンプレート別のものを定義-->
+                  <div id="star_top<%= post.id %>"></div>
                     <script>
-                      $('#star_<%= post.id %>').raty({
+                      $('#star_top<%= post.id %>').raty({
                         size: 36,
                         starOff:  '<%= asset_path('star-off.png') %>',
                         starOn : '<%= asset_path('star-on.png') %>',
                         starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,  
+                        half: true,
                         readOnly: true,
                         score: <%= post.rate %>,
                       });
-                    </script>  
+                    </script>
                   <!---->
                   </div>
                 </div>

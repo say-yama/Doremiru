@@ -2,7 +2,7 @@
   <h2>カテゴリの追加</h2>
   <div class="col-md-8 mx-auto mt-3">
     <div class="row">
-
+<!--カテゴリーの入力フォーム-->
       <div class="col-md-6">
        <%= form_with model: [:admins, @category] do |f| %>
           <div class="from_input">
@@ -14,7 +14,7 @@
           </div>
        <% end %>
       </div>
-
+<!--登録したカテゴリーの表示-->
       <div class="col-md-6">
        <h4 class="mb-4">カテゴリー 一覧</h4>
        <% @categories.each do |category| %>

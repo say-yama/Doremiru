@@ -2,7 +2,7 @@
 
   <div class="card shadow-lg col-md-6 mx-auto h-100">
     <div class="card-body text-dark">
-          <!--アカウント名とアイコン-->
+      <!--アカウント名とアイコン-->
       <div class="row">
         <div class="d-flex">
             <div class="col-2">
@@ -16,7 +16,7 @@
             </div>
         </div>
       </div>
-        <!---->
+      <!---->
         <!--投稿作品-->
         <div class="d-flex justify-content-around mt-4 mb-4">
           <div class="img-thumbnail"><%=  link_to image_tag(@post.book.image_url), @post.book.url %></div>
@@ -30,6 +30,7 @@
          <%= @post.book.title %>
        </h5>
        <!---->
+      <!--投稿内容-->
        <h2 class="card-title border-bottom">
          <%= @post.post_title %>
        </h2>
@@ -39,16 +40,19 @@
        <p class="card-text">
          <%= @post.post_body %>
        </p>
+       <!--会員がログイン中のみ表示-->
        <% if @post.user == current_user %>
          <div class="text-right">
            <%= link_to"編集", edit_post_path(@post), class: "btn btn-primary" %>
            <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
          </div>
+       <!--管理者がログイン中のみ表示-->
        <% elsif admin_signed_in? %>
          <div class="text-right">
            <%= link_to"削除", post_path(@post), class: "btn btn-danger", method: :delete %>
          </div>
        <% end %>
+       <!---->
        <div class="d-flex">
          <span class="mr-3">
            <% if admin_signed_in? %>
@@ -100,7 +104,6 @@
           <p class="text-right m-0"><%= l comment.created_at %></p>
            <% if comment.user == current_user %>
              <div class="text-right">
-               <%#= link_to"編集", edit_comment_path(@post, comment), class: "btn btn-primary" %>
                <%= link_to"削除", post_comment_path(@post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"}%>
              </div>
            <% elsif admin_signed_in? %>

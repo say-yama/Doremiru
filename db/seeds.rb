@@ -43,7 +43,6 @@ Genre.create!(
     { name: "恋愛" },
     { name: "ホラー・サスペンス" },
     { name: "歴史" },
-    { name: "ヒューマン" },
     { name: "コメディ" },
     { name: "学習" },
   ]

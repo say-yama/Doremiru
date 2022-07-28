@@ -21,15 +21,15 @@
 <...>
 
 使用gem
-devise	        会員と管理者登録
-devise-i18n.    deviseの日本語化
-kaminari	      ページネーション
-bootstrap	      デザイン
+devise	            会員と管理者登録
+devise-i18n.        deviseの日本語化
+kaminari	          ページネーション
+bootstrap	          デザイン
 enum_help	          ステータス管理
-rails-i18n	          日本語化
-themoviedb-api	API　TMBIの使用簡素化
-jquery-rails	  非同期通信　レビューおよびAPIに使用
-rakuten_web_service　　楽天APIの
+rails-i18n	         日本語化
+jquery-rails	       非同期通信　レビューおよびAPIに使用
+rakuten_web_service　楽天APIにより本の画像使用
+dotenv-rails          環境変数の使用
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -39,8 +39,7 @@ rakuten_web_service　　楽天APIの
 - IDE：Cloud9
 
 ## 使用素材
-- 外部APIの利用をして画像登録予定。制作経過次第では画像の使用はなしの予定
-- 楽天API（使用予定）
-- TMDB API（使用予定）
+- 外部APIの利用をして画像登録予定。
+- 楽天API
 - 『いらすとや』(https://www.irasutoya.com/)の素材使用
  

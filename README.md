@@ -43,3 +43,5 @@ dotenv-rails          環境変数の使用
 - 楽天API
 - 『いらすとや』(https://www.irasutoya.com/)の素材使用
  
+![PF_ER図-PF drawio](https://user-images.githubusercontent.com/104709136/181411297-cae51d27-702c-4fc2-ad79-dfbceae569cf.png)
+![PF _UIフロー-管理者側 drawio](https://user-images.githubusercontent.com/104709136/181411508-dc570331-485f-484c-9662-b5e250420324.png)

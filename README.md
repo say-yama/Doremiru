@@ -21,15 +21,15 @@
 <...>
 
 使用gem
-devise	            会員と管理者登録
-devise-i18n.        deviseの日本語化
-kaminari	          ページネーション
-bootstrap	          デザイン
-enum_help	          ステータス管理
-rails-i18n	         日本語化
-jquery-rails	       非同期通信　レビューおよびAPIに使用
-rakuten_web_service　楽天APIにより本の画像使用
-dotenv-rails          環境変数の使用
+devise	            会員と管理者登録<br>
+devise-i18n.        deviseの日本語化<br>
+kaminari	          ページネーション<br>
+bootstrap	          デザイン<br>
+enum_help	          ステータス管理<br>
+rails-i18n	         日本語化<br>
+jquery-rails	       レビューおよびAPIに使用<br>
+rakuten_web_service　楽天APIにより本の画像使用<br>
+dotenv-rails          環境変数の使用<br>
 
 ## 開発環境
 - OS：Linux(CentOS)

@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :book
   has_many :favorites, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :post_title, presence: true, length: { maximum: 30 } #タイトルは30文字まで
   validates :post_body, length: { maximum: 400 } #内容は400字まで

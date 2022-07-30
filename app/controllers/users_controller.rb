@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:favorites]
   def show
     @user = User.find(params[:id])
+    @show_user = current_user
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5) #新着順
   end
 

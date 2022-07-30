@@ -56,7 +56,7 @@
            <div class="d-flex">
              <p class="card-text"> <%= l post.created_at %> </p>
              <!--投稿したユーザーだったら-->
-             <% if @user == post.user %>
+             <% if @showuser == post.user %>
                <div class="text-right ml-2">
                 <%= link_to"削除", post_path(post), class: "btn btn-danger", method: :delete %>
                </div>

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post "/" => "homes#top" # デプロイ環境でroutesエラー解消のため
   get "about" => "homes#about"
   get "searches/search"
-  get 'genres/new'
+
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :destroy]

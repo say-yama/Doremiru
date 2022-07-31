@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   devise_for :admins, controllers: {
     sessions: "admins/sessions",
     passwords: "admins/passwords",
@@ -12,8 +14,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :reports, only: [:index, :show, :update]
     resources :users, only: [:index, :show, :update]
-    resources :categories, only: [:index, :create, :destroy]
-    resources :genres, only: [:index, :create, :destroy]
     resources :reports,   only: [:index, :show, :update]
   end
 
@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   post "/" => "homes#top" # デプロイ環境でroutesエラー解消のため
   get "about" => "homes#about"
   get "searches/search"
-
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :destroy]

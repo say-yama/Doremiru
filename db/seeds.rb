@@ -15,7 +15,7 @@ User.create!(
   [
     { email: 'aaa@aaa', name: 'あい', password: 'password' },
     { email: 'bbb@bbb', name: 'ボーイ', password: 'password' },
-    { email: 'ccc@ccc', name: 'ccc', password: 'password' }, 
+    { email: 'ccc@ccc', name: 'ccc', password: 'password' },
     { email: 'ddd@ddd', name: 'ddd', password: 'password' },
     { email: 'eee@eee', name: 'いーね', password: 'password' },
     { email: 'fff@fff', name: 'えふ', password: 'password' },
@@ -24,26 +24,5 @@ User.create!(
     { email: 'iii@iii', name: '私', password: 'password' },
     { email: 'jjj@jjj', name: 'ごはん', password: 'password' },
     { email: 'kkk@kkk', name: 'K', password: 'password' },
-  ]
-)
-
-Category.create!(
-  [
-    { name: "小説" },
-    { name: "マンガ" },
-  ]
-)
-
-Genre.create!(
-  [
-    { name: "アクション" },
-    { name: "ミステリー" },
-    { name: "ファンタジー" },
-    { name: "SF" },
-    { name: "恋愛" },
-    { name: "ホラー・サスペンス" },
-    { name: "歴史" },
-    { name: "コメディ" },
-    { name: "学習" },
   ]
 )

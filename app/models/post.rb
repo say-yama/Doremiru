@@ -1,10 +1,13 @@
 class Post < ApplicationRecord
-  belongs_to :category
-  belongs_to :genre
   belongs_to :user
   belongs_to :book
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  enum status: { active: 0, closed: 1 }
+  enum category: { book: 0, comic: 1 }
+  enum genre: { romance: 0, fantazy: 1, action: 2, mystery: 3, sf: 4, horror: 5, comedy: 6, history: 7, human: 8, non_fiction: 9,
+                gourmet: 10, sports: 11, business: 12, other: 13 }
 
   validates :post_title, presence: true, length: { maximum: 30 } #タイトルは30文字まで
   validates :post_body, length: { maximum: 400 } #内容は400字まで
@@ -13,8 +16,11 @@ class Post < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true
   # ランキングで使用
-  scope :comics, -> { where(category_id: 2) }
-  scope :books, -> { where(category_id: 1) }
+  scope :books, -> { Post.book }
+  scope :comics, -> { Post.comic }
+
+  # 投稿ステータスが表示状態
+  scope :active, -> { where(status: :active) }
 
   # いいねしているのがログイン中のユーザーかどうか
   def favorited?(user)
@@ -25,7 +31,7 @@ class Post < ApplicationRecord
   def self.search(search_params)
     return if search_params.nil?
     where("title LIKE ?", "%#{search_params[:search]}%").
-      where("category_id LIKE ?", "%#{search_params[:category_id]}%").
-      where("genre_id LIKE ?", "%#{search_params[:genre_id]}%")
+      where("category LIKE ?", "%#{search_params[:category]}%").
+      where("genre LIKE ?", "%#{search_params[:genre]}%")
   end
 end

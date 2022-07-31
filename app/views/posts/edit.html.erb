@@ -7,12 +7,12 @@
             <%= f.text_field :title, class: "form-control" %>
           </div>
           <div class="form_input">
-            <%= f.label :category_id, "カテゴリー" %><br>
-            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+            <%= f.label :category, "カテゴリー (必須）", class: "h4 m-2" %><br>
+            <%= f.collection_radio_buttons :category, Post.categories_i18n, :first, :last %>
           </div>
           <div class="form_input">
-            <%= f.label :genre_id, "ジャンル" %><br>
-            <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+            <%= f.label :genre, "ジャンル" %><br>
+             <%= f.collection_radio_buttons :genre, Post.genres_i18n, :first, :last %>
           </div>
           <div class="form-input" id="star">
             <%= f.label :rate, "作品のおすすめ度", class: "h4 m-2" %>
@@ -26,7 +26,10 @@
             <%= f.label :post_body, "感想 (400字以内)" %>
             <%= f.text_field :post_body, class: "form-control" %>
           </div>
-
+          <div class="form_input">
+            <%= f.label :status, "投稿の表示/非表示", class: "m-2" %> <br>
+            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+          </div>
           <div class="form_action row mt-3">
               <%= f.submit "編集する", class: "btn btn-primary"%>
           </div>

@@ -41,10 +41,7 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li>
-                 <%= link_to"カテゴリー", admins_categories_path, class: "nav-item hover" %>
-                </li>
-                <li>
-                 <%= link_to"ジャンル", admins_genres_path, class: "nav-item hover" %>
+                 <%= link_to"TOP", root_path, class: "nav-item hover"%>
                 </li>
                 <li>
                  <%= link_to"作品サーチ", search_path, class: "nav-item hover" %>

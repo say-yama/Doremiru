@@ -7,12 +7,12 @@
           <%= f.text_field :search, class: "form-control" %>
         </div>
         <div class="form_input mt-2">
-          <%= f.label :category_id, "カテゴリー", class: "h4" %><br>
-          <%= f.collection_radio_buttons :category_id, Category.all,:id, :name %>
+          <%= f.label :category, "カテゴリー", class: "h4" %><br>
+          <%= f.collection_radio_buttons :cateory, Post.categories_i18n, :first, :last%>
         </div>
         <div class="form_input mt-2">
-          <%= f.label :genre_id, "ジャンル", class: "h4" %><br>
-          <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+          <%= f.label :genre, "ジャンル", class: "h4" %><br>
+          <%= f.collection_radio_buttons :genre, Post.genres_i18n, :first, :last %>
         </div>
         <div class="form_action row mt-4">
             <%= f.submit "検索する", class: "btn btn-primary"%>

@@ -48,16 +48,16 @@ class PostsController < ApplicationController
   def search
     # モデルに定義
     @search_count = Post.search(params)
-    @search_posts = Post.search(params).page(params[:page])
+    @search_posts = Post.search(params).page(params[:page]).order(created_at: :desc)
   end
 end
 
 private
 
 def post_params
-  params.require(:post).permit(:book_id, :category_id, :genre_id, :title, :post_title, :post_body, :rate,)
+  params.require(:post).permit(:book_id, :category, :genre, :post_title, :post_body, :rate)
 end
 
 def search
-  params.permit(:title, :category_id, :genre_id)
+  params.permit(:title, :category, :genre)
 end

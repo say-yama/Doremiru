@@ -14,3 +14,22 @@ ja:
         outstanding: "未対応"
         closed: "対応済"
         unnecessary: "対応不要"
+    post:
+      category:
+        book: "小説"
+        comic: "マンガ"
+      genre:
+        romance: "恋愛"
+        fantazy: "ファンタジー"
+        action: "アクション/冒険"
+        mystery: "ミステリー" 
+        sf: "SF"
+        horror: "ホラー/サスペンス" 
+        comedy: "コメディ"
+        history: "歴史" 
+        human: "ヒューマン"
+        non_fiction: "ノンフィクション"
+        gourmet: "グルメ"
+        sports: "スポーツ"
+        business: "実用書/学問"
+        other: "その他"

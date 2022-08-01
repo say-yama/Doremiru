@@ -1,29 +1,23 @@
  <!--Rank-->
-  <div class="col-md-5 mt-3 mx-auto">
-    <table class="table border bg-white">
-      <h3 class=" bg-white">
-        <span class="crown">
-          <i class="fa-solid fa-crown"></i>
-        </span>
-        マンガRank
-      </h3>
-      <thead>
-        <tr class="text-center" style="background:#FFBBFF;">
-          <th>Rank</th>
-          <th>作品名</th>
-          <th>記事の本数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @comic_ranks.first(3).each_with_index do |rank, i| %>
-          <tr class="text-center">
-            <td><%= i + 1 %></td>
-            <td><%=rank.first %></td>
-            <td><%=rank.second %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="col-md-8 mt-3 mx-auto">
+  <h3 class=" bg-white">
+    <span class="crown">
+      <i class="fa-solid fa-crown"></i>
+    </span>
+    マンガRank
+  </h3>
+  <div class="d-flex bg-white justify-content-around pt-3">
+      <% @comic_ranks.each.with_index do |rank, i| %>
+        <div class="text-center d-flex">
+          <div>
+            <h3><%= i + 1 %>位</h3>
+            <td><%= link_to image_tag(rank.image_url), rank.url %></td>
+            <span class="hidden font-weight-bold"><%= rank.title %></span>
+            <%= rank.author %><br>
+            <br>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>
 

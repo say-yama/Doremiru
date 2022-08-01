@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -29,9 +29,9 @@
   <body>
     <header class="bg-info">
       <div class="d-flex flex-column">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light p-1">
           <a class="navbar-brand bg-white rounded p-0 d-flex align-items-center" href="/">
-            <h1 class="font-weight-bold m-0">どれみる</h1><%= image_tag"megane.png", size: "180x50" %>
+            <h1 class="font-weight-bold">どれみる</h1><%= image_tag"megane.png", size: "180x50" %>
           </a>
           <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,10 +41,7 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li>
-                 <%= link_to"カテゴリー", admins_categories_path, class: "nav-item hover" %>
-                </li>
-                <li>
-                 <%= link_to"ジャンル", admins_genres_path, class: "nav-item hover" %>
+                 <%= link_to"TOP", root_path, class: "nav-item hover"%>
                 </li>
                 <li>
                  <%= link_to"作品サーチ", search_path, class: "nav-item hover" %>

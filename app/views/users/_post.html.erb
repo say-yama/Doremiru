@@ -14,8 +14,8 @@
         <div class="d-flex justify-content-around mt-2 mb-2">
           <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
           <div class="text-right">
-           <p class="text-right"><%= post.category %></p>
-           <p class="text-right"><%= post.genre %></p>
+           <p class="text-right"><%= post.category_i18n %></p>
+           <p class="text-right"><%= post.genre_i18n %></p>
            <!--星レビュー表示-->
            <div id="star-<%= post.id %>"></div>
             <script>

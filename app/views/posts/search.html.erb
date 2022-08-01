@@ -8,7 +8,7 @@
         </div>
         <div class="form_input mt-2">
           <%= f.label :category, "カテゴリー", class: "h4" %><br>
-          <%= f.collection_radio_buttons :cateory, Post.categories_i18n, :first, :last%>
+          <%= f.collection_radio_buttons :category, Post.categories_i18n, :first, :last%>
         </div>
         <div class="form_input mt-2">
           <%= f.label :genre, "ジャンル", class: "h4" %><br>

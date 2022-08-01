@@ -25,9 +25,9 @@ class Post < ApplicationRecord
 
   # 投稿作品検索
   def self.search(search_params)
-    return if search_params.nil?
-    where("title LIKE ?", "%#{search_params[:search]}%").
-      where("category LIKE ?", "%#{search_params[:category]}%").
-      where("genre LIKE ?", "%#{search_params[:genre]}%")
+    rc=joins(:book).where("books.title LIKE ?", "%#{search_params[:search]}%")
+    rc=rc.where(category: search_params[:category]) if search_params[:category].present?
+    rc=rc.where(genre: search_params[:genre]) if search_params[:genre].present?
+    return rc
   end
 end

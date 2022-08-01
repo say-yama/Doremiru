@@ -14,8 +14,8 @@
         <div class="d-flex justify-content-around mt-2 mb-2">
           <div class="img-thumbnail"><%= image_tag(post.book.image_url) %></div>
           <div class="text-right">
-           <p class="text-right"><%= post.category.name %></p>
-           <p class="text-right"><%= post.genre.name %></p>
+           <p class="text-right"><%= post.category %></p>
+           <p class="text-right"><%= post.genre %></p>
            <!--星レビュー表示-->
            <div id="star-<%= post.id %>"></div>
             <script>
@@ -39,9 +39,6 @@
          <h2 class="card-title border-bottom">
            <%= post.post_title %>
          </h2>
-         <h4 class="card-title border p-1">
-           <%= post.title %>
-         </h4>
          <p class="card-text">
            <%= post.post_body %>
          </p>

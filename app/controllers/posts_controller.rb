@@ -17,9 +17,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    unless @post.status == 1
-      "投稿は非表示になっています"
-    end
     @comment = Comment.new
     @comments = @post.comments.order(created_at: :desc)
   end
@@ -58,7 +55,7 @@ end
 private
 
 def post_params
-  params.require(:post).permit(:book_id, :category, :genre, :title, :post_title, :post_body, :rate, :status)
+  params.require(:post).permit(:book_id, :category, :genre, :post_title, :post_body, :rate)
 end
 
 def search

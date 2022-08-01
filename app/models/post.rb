@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  enum status: { active: 0, closed: 1 }
   enum category: { book: 0, comic: 1 }
   enum genre: { romance: 0, fantazy: 1, action: 2, mystery: 3, sf: 4, horror: 5, comedy: 6, history: 7, human: 8, non_fiction: 9,
                 gourmet: 10, sports: 11, business: 12, other: 13 }
@@ -18,9 +17,6 @@ class Post < ApplicationRecord
   # ランキングで使用
   scope :books, -> { Post.book }
   scope :comics, -> { Post.comic }
-
-  # 投稿ステータスが表示状態
-  scope :active, -> { where(status: :active) }
 
   # いいねしているのがログイン中のユーザーかどうか
   def favorited?(user)

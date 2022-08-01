@@ -2,10 +2,6 @@
   <div class="col-md-8 mx-auto">
     <h1>投稿編集</h1>
       <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
-          <div class="form-input">
-            <%= f.label :title, "作品名" %>
-            <%= f.text_field :title, class: "form-control" %>
-          </div>
           <div class="form_input">
             <%= f.label :category, "カテゴリー (必須）", class: "h4 m-2" %><br>
             <%= f.collection_radio_buttons :category, Post.categories_i18n, :first, :last %>
@@ -26,10 +22,7 @@
             <%= f.label :post_body, "感想 (400字以内)" %>
             <%= f.text_field :post_body, class: "form-control" %>
           </div>
-          <div class="form_input">
-            <%= f.label :status, "投稿の表示/非表示", class: "m-2" %> <br>
-            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
-          </div>
+          
           <div class="form_action row mt-3">
               <%= f.submit "編集する", class: "btn btn-primary"%>
           </div>

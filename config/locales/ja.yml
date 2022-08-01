@@ -15,9 +15,6 @@ ja:
         closed: "対応済"
         unnecessary: "対応不要"
     post:
-      status:
-        active: "表示する"
-        closed: "非表示にする"
       category:
         book: "小説"
         comic: "マンガ"

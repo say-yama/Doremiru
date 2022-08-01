@@ -97,11 +97,9 @@ ActiveRecord::Schema.define(version: 2022_07_31_080243) do
     t.string "book_id", null: false
     t.integer "genre", null: false
     t.integer "category", null: false
-    t.string "title"
     t.string "post_title", null: false
     t.text "post_body"
     t.float "rate", default: 0.0, null: false
-    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

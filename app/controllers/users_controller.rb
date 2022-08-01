@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @show_user = current_user
-    @posts = @user.posts.open.order(created_at: :desc).page(params[:page]).per(5) #新着順
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5) #新着順
   end
 
   def edit
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def favorites
     # いいねした投稿
     favorites = Favorite.where(user_id: @user.id).order(created_at: :desc).pluck(:post_id)
-    @favorite_posts = Post.find(favorites).open
+    @favorite_posts = Post.find(favorites)
     @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
   end
 

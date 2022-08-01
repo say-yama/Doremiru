@@ -76,4 +76,6 @@ gem "enum_help"
 gem "devise-i18n"
 gem "rakuten_web_service"
 gem "dotenv-rails"
-gem "net-smtp"
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'

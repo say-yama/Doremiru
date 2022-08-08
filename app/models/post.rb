@@ -10,6 +10,8 @@ class Post < ApplicationRecord
 
   validates :post_title, presence: true, length: { maximum: 30 } #タイトルは30文字まで
   validates :post_body, length: { maximum: 400 } #内容は400字まで
+  validates :category, presence: true
+  validates :genre, presence: true
   # 星レビューの数
   validates :rate, numericality: {
     less_than_or_equal_to: 5,

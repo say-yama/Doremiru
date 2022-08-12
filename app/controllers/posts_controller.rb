@@ -1,4 +1,13 @@
 class PostsController < ApplicationController
+  def index
+    # byebug
+    @genre = params[:genre]
+    @genres = Post.genres_i18n
+    # モデルに定義している検索機能
+    @search_count = Post.search(params)
+    @search_posts = Post.search(params).page(params[:page]).order(created_at: :desc)
+  end
+
   def new
     @post = Post.new
     @book = Book.find(params[:id])
@@ -46,7 +55,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    # モデルに定義
+    # モデルに定義している検索機能
     @search_count = Post.search(params)
     @search_posts = Post.search(params).page(params[:page]).order(created_at: :desc)
   end

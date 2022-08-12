@@ -9,6 +9,9 @@ class HomesController < ApplicationController
     @ranks = Book.find(Post.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
     @book_ranks = Book.find(Post.books.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
     @comic_ranks = Book.find(Post.comics.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
+
+    # ジャンル検索リンク
+    @genres = Post.genres_i18n
   end
 
   def about

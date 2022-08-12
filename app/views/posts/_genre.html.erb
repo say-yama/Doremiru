@@ -1,0 +1,10 @@
+<!--ジャンルリンク-->
+<div class="mt-3">
+  <%= form_with url: posts_path, local: true, method: :get do %>
+    <% @genres.each do |genre| %>
+      <div class="mr-3">
+        <%= link_to genre[1], posts_path(genre: genre), class: "genre-text hover3" %><br>
+      </div>
+    <% end %>
+  <% end %>
+</div>

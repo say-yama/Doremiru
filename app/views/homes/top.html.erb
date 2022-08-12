@@ -1,34 +1,41 @@
-<div class="col-md-12 bg-light p-0">
+<div class="d-flex">
 
-<!--タブによる投稿一覧画面変更-->
-<ul class="nav nav-tabs bg-white">
-  <li class="nav-item lead text-align-center space">
-    <a class="nav-link active pl-5 pr-5" href="#TOP" data-bs-toggle="tab">TOP</a>
-  </li>
-  <li class="nav-item lead space">
-    <a class="nav-link pl-5 pr-5" href="#book" data-bs-toggle="tab">小説</a>
-  </li>
-  <li class="nav-item lead space">
-    <a class="nav-link pl-5 pr-5" href="#comic" data-bs-toggle="tab">マンガ</a>
-  </li>
-</ul>
-<!--タブ画面のテンプレート-->
-<div class="tab-content">
-    <div id="TOP" class="tab-pane active">
-      <div>
-        <%= render "posts/index" %>
-      </div>
-    </div>
-    <div id="book" class="tab-pane">
-      <div>
-        <%= render "posts/book" %>
-      </div>
-    </div>
-    <div id="comic" class="tab-pane">
-      <div>
-        <%= render "posts/comic" %>
-      </div>
-    </div>
-</div>
+  <!--ジャンルによる検索リンク-->
+  <div class="col-md-2 p-0">
+    <%= render "posts/genre" %>
+  </div>
+  <div class="col-md-10 bg-light p-0">
 
+    <!--タブによる投稿一覧画面変更-->
+    <ul class="nav nav-tabs bg-white">
+      <li class="nav-item lead text-align-center space">
+        <a class="nav-link active pl-5 pr-5" href="#TOP" data-bs-toggle="tab">TOP</a>
+      </li>
+      <li class="nav-item lead space">
+        <a class="nav-link pl-5 pr-5" href="#book" data-bs-toggle="tab">小説</a>
+      </li>
+      <li class="nav-item lead space">
+        <a class="nav-link pl-5 pr-5" href="#comic" data-bs-toggle="tab">マンガ</a>
+      </li>
+    </ul>
+    <!--タブ画面のテンプレート-->
+    <div class="tab-content">
+        <div id="TOP" class="tab-pane active">
+          <div>
+            <%= render "posts/index" %>
+          </div>
+        </div>
+        <div id="book" class="tab-pane">
+          <div>
+            <%= render "posts/book" %>
+          </div>
+        </div>
+        <div id="comic" class="tab-pane">
+          <div>
+            <%= render "posts/comic" %>
+          </div>
+        </div>
+    </div>
+
+  </div>
 </div>

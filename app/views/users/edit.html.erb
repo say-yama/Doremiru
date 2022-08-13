@@ -11,7 +11,7 @@
             <% if @user.image.attached? %> <!--もしイメージ登録があったら-->
              <%= image_tag @user.image, size: "200x200" %>
             <% else %>
-             <i class="fa-solid fa-user fa-5x border p-3 rounded-circle" style="color: gray;"></i><!--デフォルト画像-->
+             <i class="fa-solid fa-user fa-5x border p-3 rounded-circle" style="color: gray;"><%= user.get_icon %></i><!--デフォルト画像-->
             <% end %>
           </div>
           <div class="text-center mt-3">

@@ -20,7 +20,6 @@ class User < ApplicationRecord
 
   # アカウントのアイコン画像
   def get_icon
-    # binding.pry
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/hashibirokou.png")
       image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")

@@ -80,3 +80,5 @@ gem "dotenv-rails"
 gem 'net-imap'
 gem 'net-pop'
 gem 'net-smtp'
+gem 'image_processing', '~> 1.2'
+gem "aws-sdk-s3", require: false

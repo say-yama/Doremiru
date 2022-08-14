@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def update
     user = current_user
     if user.update(user_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to user_path(user.id)
     else
       flash[:notice] = "編集に失敗しました。文字数は50文字までにしてください"

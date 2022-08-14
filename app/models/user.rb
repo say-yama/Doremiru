@@ -22,8 +22,10 @@ class User < ApplicationRecord
   def get_icon
     unless image.attached?
       # file_path = Rails.root.join("app/assets/images/hashibirokou.png")
-      file_path = Rails.root.join("https://#{ ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/animal_hashibirokou-thumbnail.png")
-      image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
+      # file_path = Rails.root.join("https://#{ ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/animal_hashibirokou-thumbnail.png")
+      # image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
+      image.attach("https://#{ ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/animal_hashibirokou-thumbnail.png", filename: "default-image.png", content_type: "image/png")
+      
     end
     image.variant(resize_to_fill: [200, 200])
   end

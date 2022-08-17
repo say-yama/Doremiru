@@ -30,6 +30,10 @@ rails-i18n	         日本語化<br>
 jquery-rails	       レビューおよびAPIに使用<br>
 rakuten_web_service　楽天APIにより本の画像使用<br>
 dotenv-rails          環境変数の使用<br>
+byebug　　　　　　　開発時に使用<br>
+rubocop.            リーダブルコードの確認<br>
+image_processing.   s3バケットの連携<br>
+aws-sdk-s3          s3バケットの連携<br>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -39,8 +43,7 @@ dotenv-rails          環境変数の使用<br>
 - IDE：Cloud9
 
 ## 使用素材
-- 外部APIの利用をして画像登録予定。
-- 楽天API
+- 楽天APIによる書籍画像。
 - 『いらすとや』(https://www.irasutoya.com/)の素材使用
 
 ![PF_ER図-PF drawio (1)](https://user-images.githubusercontent.com/104709136/184349682-c65c8004-e5cd-40ac-9a4a-6586cbdae14a.png)

@@ -1,11 +1,11 @@
 class BooksController < ApplicationController
   def books_search
     @books = []
-    @title = params[:keyword]
-    if @title.present?
+    title = params[:keyword]
+    if title.present?
       # 楽天APIから検索取得したデータ（jsonデータ）
       results = RakutenWebService::Books::Book.search({
-        title: @title,
+        title: title,
       })
       # APIからの取得したJSONデータを格納
       results.each do |result|

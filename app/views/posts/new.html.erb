@@ -1,5 +1,18 @@
 <div class="row">
   <h1>新規投稿</h1>
+  <!--<%# if @post.errors.any? %>-->
+  <!--  <%# @post.errors.full_massages.each do |message| %>-->
+  <!--    <%#= message %>-->
+  <!--  <%# end %>-->
+  <!--<%# end %>-->
+  <% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   <div class="col-md-8 mx-auto">
 <!--選択した本を表示-->
     <div class="card-body text-dark">

@@ -21,15 +21,14 @@ Rails.application.routes.draw do
   get "/" => "homes#top"
   post "/" => "homes#top" # デプロイ環境でroutesエラー解消のため
   get "about" => "homes#about"
-  get "searches/search"
   resources :posts do
     resources :favorites, only: [:create, :destroy]
-    resources :comments, only: [:create, :edit, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   get "search" => "posts#search"
   get "books_search" => "books#books_search"
   post "/posts/new" => "posts#new"
-  resources :users, only: [:show, :edit, :update, :favorites, :check, :withdrawal] do
+  resources :users, only: [:show, :edit, :update, :favorites, :withdrawal] do
     resources :reports, only: [:new, :create]
     member do
       get "withdrawal" => "users#withdrawal"

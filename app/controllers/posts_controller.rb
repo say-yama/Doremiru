@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
   def index
-    # byebug
     @genre = params[:genre]
     @genres = Post.genres_i18n
-    # モデルに定義している検索機能
-    @search_count = Post.search(params)
+    # search = モデルに定義している検索機能
     @search_posts = Post.search(params).page(params[:page]).order(created_at: :desc)
   end
 
@@ -19,8 +17,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
-      flash[:notice] = "エラーが発生しました"
-      redirect_to books_search_path
+      @book = Book.find(params[:id])
+      render :new
     end
   end
 
@@ -39,8 +37,10 @@ class PostsController < ApplicationController
     if post.update(post_params)
       redirect_to post_path(params[:id])
     else
-      flash[:notice] = "エラーが発生しました"
-      redirect_to post_path(params[:id])
+      # redirect_to post_path(params[:id])
+      @post = Post.find(params[:id])
+      flash.now[:alert] = "エラーが発生しました"
+      render :edit
     end
   end
 
